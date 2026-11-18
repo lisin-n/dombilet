@@ -1,0 +1,32 @@
+{
+  "source": "Yas Marina Circuit.svg",
+  "strategy": "Use the latest exact plan and all source product zones with a minimal neutral backdrop. Do not distort the new geometry onto the older illustrative background.",
+  "selectableZones": 35,
+  "namedGroupsInSource": 36,
+  "nestedGeometryAlias": {
+    "GA": "general-admission"
+  },
+  "affineAnchorErrorOldSvgUnits": [
+    27.7,
+    33.2,
+    51.2,
+    38.4,
+    47.3,
+    46.7
+  ],
+  "duplicateIdsResolved": {
+    "yas-suite": [
+      "yas-suite-west",
+      "yas-suite-main",
+      "yas-suite-north"
+    ],
+    "lounge": [
+      "lounge-west",
+      "lounge-north"
+    ]
+  },
+  "sourceGeometryUnchanged": true,
+  "labelsInsideSectorGroups": true,
+  "mobile": "Counterclockwise rotation puts the North Grandstand end at the top. Names counter-rotated for reading.",
+  "noTreesOrInventedLandmarks": true
+}

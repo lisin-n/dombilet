@@ -1,0 +1,162 @@
+{
+  "main": {
+    "name": "Ещё предложения Main",
+    "parent": "main",
+    "keys": [
+      "terrace",
+      "yas-suite-main",
+      "yas-suite-main-premium"
+    ],
+    "anchorPortrait": [
+      1545,
+      1070
+    ],
+    "anchorLandscape": [
+      1330,
+      695
+    ],
+    "names": [
+      "Terrace",
+      "Yas Suite",
+      "Yas Suite Main Premium"
+    ],
+    "exactPointLocations": false
+  },
+  "north": {
+    "name": "Ещё предложения North",
+    "parent": "north",
+    "keys": [
+      "north-straight",
+      "north-straight-premium",
+      "sunset-lounge",
+      "trackside-at-sunset-lounge",
+      "yas-suite-north",
+      "lounge-north",
+      "shams-suite"
+    ],
+    "anchorPortrait": [
+      1440,
+      260
+    ],
+    "anchorLandscape": [
+      520,
+      800
+    ],
+    "names": [
+      "North Straight",
+      "North Straight Premium",
+      "Sunset Lounge",
+      "Trackside @Sunset Lounge",
+      "Yas Suite",
+      "Lounge",
+      "Shams Suite"
+    ],
+    "exactPointLocations": false
+  },
+  "west": {
+    "name": "Ещё предложения West",
+    "parent": "west",
+    "keys": [
+      "west-straight",
+      "club58",
+      "yas-suite-west",
+      "lounge-west",
+      "west-club",
+      "turn-at-west"
+    ],
+    "anchorPortrait": [
+      750,
+      1080
+    ],
+    "anchorLandscape": [
+      1340,
+      1490
+    ],
+    "names": [
+      "West Straight",
+      "Club58",
+      "Yas Suite",
+      "Lounge",
+      "West Club",
+      "Turn @ West"
+    ],
+    "exactPointLocations": false
+  },
+  "marina": {
+    "name": "Ещё предложения Marina",
+    "parent": "marina",
+    "keys": [
+      "marsa-suite",
+      "marina-views-suite",
+      "wow-suite",
+      "yacht-hospitality"
+    ],
+    "anchorPortrait": [
+      845,
+      1520
+    ],
+    "anchorLandscape": [
+      1780,
+      1395
+    ],
+    "names": [
+      "Marsa Suite",
+      "Marina Views Suite",
+      "Wow Suite",
+      "Yacht Hospitality"
+    ],
+    "exactPointLocations": false
+  },
+  "south": {
+    "name": "Ещё предложения South",
+    "parent": "south",
+    "keys": [
+      "deck-at-9",
+      "south-club"
+    ],
+    "anchorPortrait": [
+      1450,
+      1795
+    ],
+    "anchorLandscape": [
+      2055,
+      790
+    ],
+    "names": [
+      "Deck @ 9",
+      "South Club"
+    ],
+    "exactPointLocations": false
+  },
+  "other": {
+    "name": "Другие предложения",
+    "parent": null,
+    "keys": [
+      "deck-at-2",
+      "the-house",
+      "the-house-premium",
+      "terrace-right",
+      "courtyard",
+      "terrace-left",
+      "16-360-the-terrace-collection"
+    ],
+    "anchorPortrait": [
+      1730,
+      1560
+    ],
+    "anchorLandscape": [
+      1820,
+      510
+    ],
+    "names": [
+      "Deck @ 2",
+      "The House",
+      "The House Premium",
+      "Terrace",
+      "Courtyard",
+      "Terrace",
+      "16/360 The Terrace Collection"
+    ],
+    "exactPointLocations": false
+  }
+}

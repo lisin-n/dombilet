@@ -1,0 +1,13 @@
+/* The existing page cart, with enough room for its summary on a phone. */
+@media(max-width:760px){
+  .page__bottom-cart[data-scheme-cart] .cart-bottom__container{gap:6px;padding:8px 10px!important;min-height:60px}
+  .page__bottom-cart[data-scheme-cart] .cart-bottom__btn-clear{width:20px;flex:0 0 20px;gap:0}
+  .page__bottom-cart[data-scheme-cart] .cart-bottom__center{flex:1;min-width:0;overflow:visible;display:flex;justify-content:center}
+  .page__bottom-cart[data-scheme-cart] .center-cart-bottom__inner{padding:0!important;overflow:visible;gap:0}
+  .page__bottom-cart[data-scheme-cart] .item-cart-bottom{font-size:10px;padding:8px 7px}
+  .page__bottom-cart[data-scheme-cart] .item-cart-bottom__selected:not(:last-child)::before{margin:0 8px}
+  .page__bottom-cart[data-scheme-cart] .actions-cart-bottom{position:static!important;flex:0 0 104px;width:104px;transform:none!important}
+  .page__bottom-cart[data-scheme-cart] .actions-cart-bottom:before{display:none}
+  .page__bottom-cart[data-scheme-cart] .actions-cart-bottom a{padding:0!important;margin:0!important;display:block}
+  .page__bottom-cart[data-scheme-cart] #total_sum{font-size:11px!important;min-height:44px;height:auto;padding:8px!important}
+}

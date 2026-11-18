@@ -1,0 +1,635 @@
+{
+  "west-straight": {
+    "name": "West Straight",
+    "sourceId": "west-straight",
+    "bbox": [
+      226.384,
+      40.5049,
+      263.4161,
+      52.7251
+    ],
+    "bboxPortrait": [
+      40.5049,
+      365.7589,
+      52.7251,
+      402.79099999999994
+    ],
+    "parent": null,
+    "type": "grandstand"
+  },
+  "west": {
+    "name": "West Grandstand",
+    "sourceId": "west",
+    "bbox": [
+      138.4258,
+      40.7949,
+      221.505,
+      84.5245
+    ],
+    "bboxPortrait": [
+      40.7949,
+      407.66999999999996,
+      84.5245,
+      490.7492
+    ],
+    "parent": null,
+    "type": "grandstand"
+  },
+  "club58": {
+    "name": "Club58",
+    "sourceId": "club58",
+    "bbox": [
+      210.915,
+      28.565,
+      219.735,
+      37.385
+    ],
+    "bboxPortrait": [
+      28.565,
+      409.43999999999994,
+      37.385,
+      418.26
+    ],
+    "parent": "west",
+    "type": "premium"
+  },
+  "yas-suite-west": {
+    "name": "Yas Suite",
+    "sourceId": "yas-suite",
+    "bbox": [
+      141.955,
+      32.985,
+      150.775,
+      41.805
+    ],
+    "bboxPortrait": [
+      32.985,
+      478.4,
+      41.805,
+      487.2199999999999
+    ],
+    "parent": "west",
+    "type": "premium"
+  },
+  "lounge-west": {
+    "name": "Lounge",
+    "sourceId": "lounge",
+    "bbox": [
+      133.025,
+      53.475,
+      141.845,
+      62.295
+    ],
+    "bboxPortrait": [
+      53.475,
+      487.3299999999999,
+      62.295,
+      496.15
+    ],
+    "parent": "west",
+    "type": "premium"
+  },
+  "west-club": {
+    "name": "West Club",
+    "sourceId": "west-club",
+    "bbox": [
+      129.775,
+      65.965,
+      138.595,
+      74.785
+    ],
+    "bboxPortrait": [
+      65.965,
+      490.5799999999999,
+      74.785,
+      499.4
+    ],
+    "parent": "west",
+    "type": "premium"
+  },
+  "turn-at-west": {
+    "name": "Turn @ West",
+    "sourceId": "turn-_x40_-west",
+    "bbox": [
+      128.283,
+      93.475,
+      137.103,
+      102.295
+    ],
+    "bboxPortrait": [
+      93.475,
+      492.07199999999995,
+      102.295,
+      500.89199999999994
+    ],
+    "parent": "west",
+    "type": "premium"
+  },
+  "marsa-suite": {
+    "name": "Marsa Suite",
+    "sourceId": "marsa-suite",
+    "bbox": [
+      77.355,
+      147.975,
+      86.175,
+      156.795
+    ],
+    "bboxPortrait": [
+      147.975,
+      543.0,
+      156.795,
+      551.8199999999999
+    ],
+    "parent": "marina",
+    "type": "premium"
+  },
+  "deck-at-9": {
+    "name": "Deck @ 9",
+    "sourceId": "deck-_x40_-9",
+    "bbox": [
+      139.445,
+      341.825,
+      148.265,
+      350.645
+    ],
+    "bboxPortrait": [
+      341.825,
+      480.90999999999997,
+      350.645,
+      489.72999999999996
+    ],
+    "parent": "south",
+    "type": "premium"
+  },
+  "south-club": {
+    "name": "South Club",
+    "sourceId": "south-club",
+    "bbox": [
+      27.635,
+      338.715,
+      36.455,
+      347.535
+    ],
+    "bboxPortrait": [
+      338.715,
+      592.7199999999999,
+      347.535,
+      601.54
+    ],
+    "parent": "south",
+    "type": "premium"
+  },
+  "marina-views-suite": {
+    "name": "Marina Views Suite",
+    "sourceId": "marina-views-suite",
+    "bbox": [
+      62.915,
+      189.815,
+      71.735,
+      198.635
+    ],
+    "bboxPortrait": [
+      189.815,
+      557.4399999999999,
+      198.635,
+      566.26
+    ],
+    "parent": "marina",
+    "type": "premium"
+  },
+  "north": {
+    "name": "North Grandstand",
+    "sourceId": "north",
+    "bbox": [
+      505.7118,
+      41.9238,
+      589.4858,
+      114.0464
+    ],
+    "bboxPortrait": [
+      41.9238,
+      39.689199999999914,
+      114.0464,
+      123.46319999999997
+    ],
+    "parent": null,
+    "type": "grandstand"
+  },
+  "main": {
+    "name": "Main Grandstand",
+    "sourceId": "main",
+    "bbox": [
+      251.7686,
+      118.9911,
+      307.4794,
+      218.3141
+    ],
+    "bboxPortrait": [
+      118.9911,
+      321.69559999999996,
+      218.3141,
+      377.40639999999996
+    ],
+    "parent": null,
+    "type": "grandstand"
+  },
+  "marina": {
+    "name": "Marina Grandstand",
+    "sourceId": "marina-grandstand",
+    "bbox": [
+      67.3201,
+      143.9411,
+      102.9559,
+      222.6278
+    ],
+    "bboxPortrait": [
+      143.9411,
+      526.2190999999999,
+      222.6278,
+      561.8548999999999
+    ],
+    "parent": null,
+    "type": "grandstand"
+  },
+  "south": {
+    "name": "South Grandstand",
+    "sourceId": "south-grandstand",
+    "bbox": [
+      39.6876,
+      285.8226,
+      57.4384,
+      361.9054
+    ],
+    "bboxPortrait": [
+      285.8226,
+      571.7366,
+      361.9054,
+      589.4874
+    ],
+    "parent": null,
+    "type": "grandstand"
+  },
+  "general-admission": {
+    "name": "General Admission",
+    "sourceId": "general-admission",
+    "bbox": [
+      325.0031,
+      74.3856,
+      402.2126,
+      178.615
+    ],
+    "bboxPortrait": [
+      74.3856,
+      226.96239999999995,
+      178.615,
+      304.17189999999994
+    ],
+    "parent": null,
+    "type": "ga",
+    "sourceAliases": [
+      "GA"
+    ]
+  },
+  "north-straight": {
+    "name": "North Straight",
+    "sourceId": "north-straight",
+    "bbox": [
+      426.895,
+      39.685,
+      480.309,
+      50.685
+    ],
+    "bboxPortrait": [
+      39.685,
+      148.86599999999993,
+      50.685,
+      202.27999999999997
+    ],
+    "parent": null,
+    "type": "grandstand"
+  },
+  "wow-suite": {
+    "name": "Wow Suite",
+    "sourceId": "wow-suite",
+    "bbox": [
+      168.885,
+      240.925,
+      177.705,
+      249.745
+    ],
+    "bboxPortrait": [
+      240.925,
+      451.4699999999999,
+      249.745,
+      460.28999999999996
+    ],
+    "parent": "marina",
+    "type": "premium"
+  },
+  "yacht-hospitality": {
+    "name": "Yacht Hospitality",
+    "sourceId": "yacht-hospitality",
+    "bbox": [
+      130.7793,
+      222.2348,
+      148.2922,
+      234.4903
+    ],
+    "bboxPortrait": [
+      222.2348,
+      480.8828,
+      234.4903,
+      498.3956999999999
+    ],
+    "parent": "marina",
+    "type": "premium"
+  },
+  "terrace": {
+    "name": "Terrace",
+    "sourceId": "terrace",
+    "bbox": [
+      306.445,
+      198.605,
+      315.265,
+      207.425
+    ],
+    "bboxPortrait": [
+      198.605,
+      313.90999999999997,
+      207.425,
+      322.72999999999996
+    ],
+    "parent": "main",
+    "type": "premium"
+  },
+  "yas-suite-main": {
+    "name": "Yas Suite",
+    "sourceId": "yas-suite",
+    "bbox": [
+      275.642,
+      136.217,
+      284.462,
+      145.037
+    ],
+    "bboxPortrait": [
+      136.217,
+      344.71299999999997,
+      145.037,
+      353.53299999999996
+    ],
+    "parent": "main",
+    "type": "premium"
+  },
+  "yas-suite-main-premium": {
+    "name": "Yas Suite Main Premium",
+    "sourceId": "yas-suite-main-premium",
+    "bbox": [
+      268.53,
+      122.091,
+      277.35,
+      130.911
+    ],
+    "bboxPortrait": [
+      122.091,
+      351.82499999999993,
+      130.911,
+      360.645
+    ],
+    "parent": "main",
+    "type": "premium"
+  },
+  "deck-at-2": {
+    "name": "Deck @ 2",
+    "sourceId": "deck-_x40_-2",
+    "bbox": [
+      382.245,
+      186.875,
+      391.065,
+      195.695
+    ],
+    "bboxPortrait": [
+      186.875,
+      238.10999999999996,
+      195.695,
+      246.92999999999995
+    ],
+    "parent": null,
+    "type": "premium"
+  },
+  "sunset-lounge": {
+    "name": "Sunset Lounge",
+    "sourceId": "sunset-lounge",
+    "bbox": [
+      481.515,
+      123.075,
+      490.335,
+      131.895
+    ],
+    "bboxPortrait": [
+      123.075,
+      138.83999999999997,
+      131.895,
+      147.65999999999997
+    ],
+    "parent": "north",
+    "type": "premium"
+  },
+  "trackside-at-sunset-lounge": {
+    "name": "Trackside @Sunset Lounge",
+    "sourceId": "trackside-_x40_sunset-lounge",
+    "bbox": [
+      488.853,
+      114.981,
+      497.673,
+      123.801
+    ],
+    "bboxPortrait": [
+      114.981,
+      131.50199999999995,
+      123.801,
+      140.32199999999995
+    ],
+    "parent": "north",
+    "type": "premium"
+  },
+  "yas-suite-north": {
+    "name": "Yas Suite",
+    "sourceId": "yas-suite",
+    "bbox": [
+      575.475,
+      90.125,
+      584.295,
+      98.945
+    ],
+    "bboxPortrait": [
+      90.125,
+      44.879999999999995,
+      98.945,
+      53.69999999999993
+    ],
+    "parent": "north",
+    "type": "premium"
+  },
+  "lounge-north": {
+    "name": "Lounge",
+    "sourceId": "lounge",
+    "bbox": [
+      589.486,
+      50.085,
+      598.306,
+      58.905
+    ],
+    "bboxPortrait": [
+      50.085,
+      30.868999999999915,
+      58.905,
+      39.688999999999965
+    ],
+    "parent": "north",
+    "type": "premium"
+  },
+  "shams-suite": {
+    "name": "Shams Suite",
+    "sourceId": "shams-suite",
+    "bbox": [
+      505.886,
+      30.475,
+      514.706,
+      39.295
+    ],
+    "bboxPortrait": [
+      30.475,
+      114.46899999999994,
+      39.295,
+      123.28899999999993
+    ],
+    "parent": "north",
+    "type": "premium"
+  },
+  "north-straight-premium": {
+    "name": "North Straight Premium",
+    "sourceId": "north-straight-premium",
+    "bbox": [
+      449.21,
+      28.136,
+      458.03,
+      36.956
+    ],
+    "bboxPortrait": [
+      28.136,
+      171.14499999999998,
+      36.956,
+      179.96499999999997
+    ],
+    "parent": "north-straight",
+    "type": "premium"
+  },
+  "the-house": {
+    "name": "The House",
+    "sourceId": "the-house",
+    "bbox": [
+      54.1152,
+      242.9352,
+      68.5358,
+      266.2142
+    ],
+    "bboxPortrait": [
+      242.9352,
+      560.6392,
+      266.2142,
+      575.0598
+    ],
+    "parent": null,
+    "type": "premium"
+  },
+  "the-house-premium": {
+    "name": "The House Premium",
+    "sourceId": "the-house-premium",
+    "bbox": [
+      50.2092,
+      265.8622,
+      61.9998,
+      279.5932
+    ],
+    "bboxPortrait": [
+      265.8622,
+      567.1751999999999,
+      279.5932,
+      578.9658
+    ],
+    "parent": null,
+    "type": "premium"
+  },
+  "terrace-right": {
+    "name": "Terrace",
+    "sourceId": "terrace-right",
+    "bbox": [
+      257.392,
+      73.601,
+      281.286,
+      83.97
+    ],
+    "bboxPortrait": [
+      73.601,
+      347.88899999999995,
+      83.97,
+      371.78299999999996
+    ],
+    "parent": null,
+    "type": "premium"
+  },
+  "courtyard": {
+    "name": "Courtyard",
+    "sourceId": "courtyard",
+    "bbox": [
+      255.2732,
+      84.487,
+      280.3002,
+      101.7371
+    ],
+    "bboxPortrait": [
+      84.487,
+      348.87479999999994,
+      101.7371,
+      373.9018
+    ],
+    "parent": null,
+    "type": "premium"
+  },
+  "terrace-left": {
+    "name": "Terrace",
+    "sourceId": "terrace-left",
+    "bbox": [
+      245.964,
+      90.0404,
+      261.8079,
+      106.803
+    ],
+    "bboxPortrait": [
+      90.0404,
+      367.36709999999994,
+      106.803,
+      383.21099999999996
+    ],
+    "parent": null,
+    "type": "premium"
+  },
+  "16-360-the-terrace-collection": {
+    "name": "16/360 The Terrace Collection",
+    "sourceId": "_x31_6_x2F_360-the-terrace-collection",
+    "bbox": [
+      220.2283,
+      71.65,
+      292.1516,
+      111.0492
+    ],
+    "bboxPortrait": [
+      71.65,
+      337.0234,
+      111.0492,
+      408.94669999999996
+    ],
+    "parent": null,
+    "type": "premium"
+  }
+}

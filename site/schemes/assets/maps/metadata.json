@@ -1,0 +1,120 @@
+{
+  "yas": {
+    "file": "yas-marina.html",
+    "sectors": [
+      "hill",
+      "west",
+      "marina",
+      "south",
+      "north",
+      "main",
+      "paddock"
+    ],
+    "sectorCount": 7,
+    "orientations": {
+      "l": {
+        "viewBox": [
+          300,
+          300,
+          1900,
+          1300
+        ],
+        "class": "dbs-l"
+      },
+      "p": {
+        "viewBox": [
+          600,
+          40,
+          1300,
+          1900
+        ],
+        "class": "dbs-p"
+      }
+    },
+    "notes": [
+      "Source geometry, contrasting colors and labels unchanged.",
+      "The hidden SVG defs are required for #dbs-geo and gradient/filter references.",
+      "Only the displayed .sector[data-sector] nodes are interactive; defs are decorative."
+    ]
+  },
+  "krasnodar": {
+    "file": "krasnodar.html",
+    "mobileFile": "krasnodar-mobile.html",
+    "sectors": [
+      "221",
+      "209",
+      "208",
+      "220",
+      "222",
+      "122",
+      "120",
+      "108",
+      "110",
+      "210",
+      "219",
+      "223",
+      "207",
+      "211",
+      "111",
+      "107",
+      "123",
+      "119",
+      "218",
+      "118",
+      "124",
+      "224",
+      "212",
+      "112",
+      "106",
+      "206",
+      "217",
+      "117",
+      "201",
+      "216",
+      "116",
+      "102",
+      "202",
+      "215",
+      "115",
+      "203",
+      "214",
+      "114",
+      "204",
+      "213",
+      "205",
+      "113",
+      "103",
+      "104",
+      "105",
+      "101"
+    ],
+    "sectorCount": 46,
+    "orientations": {
+      "stadium": {
+        "viewBox": [
+          0,
+          0,
+          968.76,
+          840.55
+        ],
+        "class": "krasnodar-desktop"
+      },
+      "stadium-p": {
+        "viewBox": [
+          0,
+          0,
+          840.55,
+          968.76
+        ],
+        "class": "krasnodar-mobile",
+        "rotation": "translate(840.55 0) rotate(90)"
+      }
+    },
+    "notes": [
+      "46 original sector groups, paths and numbering preserved.",
+      "Mobile file rotates the same geometry 90 degrees, counterrotating sector-number text.",
+      "Source shape CSS uses !important. Override sector path fill/stroke with element.style.setProperty(property,value,important).",
+      "Do not apply interactive class to cardinal tribune bands or field."
+    ]
+  }
+}

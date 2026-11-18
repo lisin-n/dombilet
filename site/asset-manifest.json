@@ -1,0 +1,864 @@
+{
+  "source": "https://dombilet.ru/sport/hockey/khl/salavat-yulaev-barys-12-nedelya-kkhl/",
+  "assets": {
+    "https://dombilet.ru/local/templates/dombilet2.0/assets/img/favicon/favicon.ico": {
+      "file": "assets/3c4cfeed8372-favicon.ico",
+      "done": true
+    },
+    "https://dombilet.ru/local/templates/dombilet2.0/assets/img/favicon/favicon.svg": {
+      "file": "assets/720927003d61-favicon.svg",
+      "done": true
+    },
+    "https://dombilet.ru/local/templates/dombilet2.0/assets/img/favicon/apple-touch-icon.png": {
+      "file": "assets/5d8e3d32ad86-apple-touch-icon.png",
+      "done": true
+    },
+    "https://dombilet.ru/local/templates/dombilet2.0/assets/img/favicon/site.webmanifest": {
+      "file": "assets/6e34c2280c79-site.webmanifest",
+      "done": true
+    },
+    "https://dombilet.ru/bitrix/cache/css/s1/dombilet2.0/page_17370873069738db4c8d6cca60e03076/page_17370873069738db4c8d6cca60e03076_v1.css?1794927198443719": {
+      "file": "assets/f76cd9af6daa-page_17370873069738db4c8d6cca60e03076_v1.css",
+      "done": true
+    },
+    "https://dombilet.ru/bitrix/cache/css/s1/dombilet2.0/template_c410a1cf20f54727c62c4acd4403682b/template_c410a1cf20f54727c62c4acd4403682b_v1.css?1794928139254221": {
+      "file": "assets/5791c54c05a1-template_c410a1cf20f54727c62c4acd4403682b_v1.css",
+      "done": true
+    },
+    "https://dombilet.ru/bitrix/js/main/core/core.min.js?1742210629225353": {
+      "file": "assets/1ee7920799cd-core.min.js",
+      "done": true
+    },
+    "https://dombilet.ru/bitrix/js/main/jquery/jquery-1.12.4.min.js?174220980097163": {
+      "file": "assets/fd24740e4cf0-jquery-1.12.4.min.js",
+      "done": true
+    },
+    "https://dombilet.ru/bitrix/cache/js/s1/dombilet2.0/template_602bebb4aa63c55a0d07e5e7d545b775/template_602bebb4aa63c55a0d07e5e7d545b775_v1.js?178403037446208": {
+      "file": "assets/39234f7bb2ab-template_602bebb4aa63c55a0d07e5e7d545b775_v1.js",
+      "done": true
+    },
+    "https://dombilet.ru/bitrix/cache/js/s1/dombilet2.0/page_9b06301712d794bcfd93d928ab07b9fc/page_9b06301712d794bcfd93d928ab07b9fc_v1.js?1794927198853506": {
+      "file": "assets/441320418728-page_9b06301712d794bcfd93d928ab07b9fc_v1.js",
+      "done": true
+    },
+    "https://dombilet.ru/local/templates/dombilet2.0/assets/img/icons/logo.svg?t=1792136453193": {
+      "file": "assets/a990c247d8c1-logo.svg",
+      "done": true
+    },
+    "https://dombilet.ru/local/templates/dombilet/assets/img/icons/max.svg": {
+      "file": "assets/a9525af520ec-max.svg",
+      "done": true
+    },
+    "https://dombilet.ru/local/templates/dombilet/assets/img/icons/tg.svg": {
+      "file": "assets/641e4399e596-tg.svg",
+      "done": true
+    },
+    "https://dombilet.ru/local/templates/dombilet2.0/assets/img/icons.svg#present-w": {
+      "file": "assets/d8a3f0e0c56e-icons.svg",
+      "done": true
+    },
+    "https://dombilet.ru/local/templates/dombilet2.0/assets/img/icons.svg#fire-w": {
+      "file": "assets/8ba162301015-icons.svg",
+      "done": true
+    },
+    "https://dombilet.ru/local/templates/dombilet2.0/assets/img/icons.svg#cubok-w": {
+      "file": "assets/035d0a5a3832-icons.svg",
+      "done": true
+    },
+    "https://dombilet.ru/local/templates/dombilet2.0/assets/img/icons.svg#note-w": {
+      "file": "assets/9138bd223fa8-icons.svg",
+      "done": true
+    },
+    "https://dombilet.ru/upload/resize_cache/iblock/e3a/390_246_1/zxmy34wfqvzfbhjkre1frn9cy9cjg8rr.jpeg": {
+      "file": "assets/f3dfbfe6ab80-zxmy34wfqvzfbhjkre1frn9cy9cjg8rr.jpeg",
+      "done": true
+    },
+    "https://dombilet.ru/local/templates/dombilet2.0/assets/img/icons/vip-crown.svg": {
+      "file": "assets/0ef9bc2f322d-vip-crown.svg",
+      "done": true
+    },
+    "https://dombilet.ru/local/templates/dombilet2.0/components/bitrix/catalog.element/.default/img/ajax-loader.gif": {
+      "file": "assets/a15e87fb70e3-ajax-loader.gif",
+      "done": true
+    },
+    "https://dombilet.ru/local/templates/dombilet2.0/components/bitrix/catalog.element/.default/img/strelka.svg": {
+      "file": "assets/30dd804615d4-strelka.svg",
+      "done": true
+    },
+    "https://dombilet.ru/upload/resize_cache/uf/9e3/390_246_1/b2hyp427qqeue176ypdu4qahltmjbt26.jpeg": {
+      "file": "assets/f4c168f7c2fc-b2hyp427qqeue176ypdu4qahltmjbt26.jpeg",
+      "done": true
+    },
+    "https://dombilet.ru/local/templates/dombilet2.0/assets/img/icons.svg#arrow-right": {
+      "file": "assets/1b23451dcc17-icons.svg",
+      "done": true
+    },
+    "https://dombilet.ru/upload/resize_cache/iblock/bb8/390_246_1/c10dwj37cm2pu5t8sp6qpt9mbc3j1otd.jpg": {
+      "file": "assets/219c8db1de46-c10dwj37cm2pu5t8sp6qpt9mbc3j1otd.jpg",
+      "done": true
+    },
+    "https://dombilet.ru/upload/resize_cache/iblock/31e/390_246_1/j6hxna728d1dyv2kueonfdof9aphhg0n.jpg": {
+      "file": "assets/2eeec840e036-j6hxna728d1dyv2kueonfdof9aphhg0n.jpg",
+      "done": true
+    },
+    "https://dombilet.ru/upload/resize_cache/iblock/7ea/390_246_1/m67wrhs2536udsi0ywv0gekuxjcvimde.jpg": {
+      "file": "assets/3996b353a17a-m67wrhs2536udsi0ywv0gekuxjcvimde.jpg",
+      "done": true
+    },
+    "https://dombilet.ru/upload/resize_cache/iblock/6a8/390_246_1/t1aky7gvcxsozoznuu2t45p0eqsjw0df.jpg": {
+      "file": "assets/8a41e895d86e-t1aky7gvcxsozoznuu2t45p0eqsjw0df.jpg",
+      "done": true
+    },
+    "https://dombilet.ru/local/templates/dombilet2.0/assets/img/icons.svg#close": {
+      "file": "assets/b78959178fdf-icons.svg",
+      "done": true
+    },
+    "https://dombilet.ru/local/templates/dombilet2.0/assets/img/footer-bg.svg": {
+      "file": "assets/45417971bdff-footer-bg.svg",
+      "done": true
+    },
+    "https://dombilet.ru/local/templates/dombilet2.0/assets/img/icons.svg#jackdaw": {
+      "file": "assets/72de81d26a78-icons.svg",
+      "done": true
+    },
+    "https://dombilet.ru/local/templates/dombilet2.0/assets/img/icons.svg#cross": {
+      "file": "assets/0b19b4e37bd3-icons.svg",
+      "done": true
+    },
+    "https://dombilet.ru/local/templates/dombilet2.0/assets/js/app.min.js?1794928022": {
+      "file": "assets/784949cdc282-app.min.js",
+      "done": true
+    },
+    "https://dombilet.ru/local/templates/dombilet2.0/components/bitrix/catalog.element/.default/js/basket.js?1790851447": {
+      "file": "assets/25d0f6286873-basket.js",
+      "done": true
+    },
+    "https://dombilet.ru/upload/iblock/ba7/qwn9o84ojethkdvl705rxos7a4swqwg7.svg": {
+      "file": "assets/9a192c9679a6-qwn9o84ojethkdvl705rxos7a4swqwg7.svg",
+      "done": true
+    },
+    "https://dombilet.ru/upload/iblock/cd6/3ehtip7e1mnhhk2iiwysw1b059ddms6h.svg": {
+      "file": "assets/eeb55878c72b-3ehtip7e1mnhhk2iiwysw1b059ddms6h.svg",
+      "done": true
+    },
+    "https://dombilet.ru/upload/iblock/008/vepbgpunwa8y29cjq3hq4vir51n6z4ia.svg": {
+      "file": "assets/3ff9db4713cc-vepbgpunwa8y29cjq3hq4vir51n6z4ia.svg",
+      "done": true
+    },
+    "https://dombilet.ru/local/templates/dombilet2.0/components/bitrix/catalog.element/.default/img/bg-map.webp": {
+      "file": "assets/a915e7d1b709-bg-map.webp",
+      "done": true
+    },
+    "https://dombilet.ru/local/templates/dombilet2.0/components/bitrix/catalog.element/img/match_loader__load.gif": {
+      "file": "assets/432256e9d791-match_loader__load.gif",
+      "done": false
+    },
+    "https://dombilet.ru/local/templates/dombilet2.0/components/bitrix/catalog.element/img/sector_popup__close.svg": {
+      "file": "assets/654e212d1155-sector_popup__close.svg",
+      "done": false
+    },
+    "https://dombilet.ru/local/templates/dombilet2.0/components/bitrix/catalog.element/.default/img/arrows.svg#arrow-down-view": {
+      "file": "assets/d907cec3d8da-arrows.svg",
+      "done": false
+    },
+    "https://dombilet.ru/local/templates/dombilet2.0/components/bitrix/catalog.element/.default/img/arrows.svg#arrow-up-view": {
+      "file": "assets/75e0eb1cc5f4-arrows.svg",
+      "done": false
+    },
+    "https://dombilet.ru/local/templates/dombilet2.0/components/bitrix/catalog.element/.default/img/arrows.svg#arrow-right-view": {
+      "file": "assets/58162f73cdbc-arrows.svg",
+      "done": false
+    },
+    "https://dombilet.ru/local/templates/dombilet/assets/img/icons/check-w.svg": {
+      "file": "assets/911ca3ce41bb-check-w.svg",
+      "done": true
+    },
+    "https://dombilet.ru/local/templates/dombilet/assets/img/icons/close-w.svg": {
+      "file": "assets/e96ad739c63b-close-w.svg",
+      "done": true
+    },
+    "https://dombilet.ru/local/templates/dombilet2.0/components/bitrix/catalog.element/img/map_table__check.svg": {
+      "file": "assets/63bc22fd786a-map_table__check.svg",
+      "done": false
+    },
+    "https://dombilet.ru/local/templates/dombilet2.0/components/bitrix/catalog.element/img/QR.png": {
+      "file": "assets/fc8c755ead35-QR.png",
+      "done": false
+    },
+    "https://dombilet.ru/local/templates/dombilet2.0/components/bitrix/catalog.element/.default/img/oko.svg": {
+      "file": "assets/5e5ec1d91a6e-oko.svg",
+      "done": false
+    },
+    "https://dombilet.ru/local/templates/dombilet2.0/components/bitrix/catalog.element/.default/img/ticket.png": {
+      "file": "assets/e84ffbad0aba-ticket.png",
+      "done": false
+    },
+    "https://dombilet.ru/local/templates/dombilet2.0/components/bitrix/catalog.element/img/question-icon.jpg": {
+      "file": "assets/e396ff41cefb-question-icon.jpg",
+      "done": false
+    },
+    "https://dombilet.ru/upload/cross.svg": {
+      "file": "assets/b4191fc53553-cross.svg",
+      "done": true
+    },
+    "https://dombilet.ru/local/templates/dombilet2.0/components/bitrix/catalog.element/.default/img/icon_date.svg": {
+      "file": "assets/fefa59400aef-icon_date.svg",
+      "done": false
+    },
+    "https://dombilet.ru/local/templates/dombilet2.0/components/bitrix/catalog.element/.default/img/icon_time.svg": {
+      "file": "assets/c8679e0de00d-icon_time.svg",
+      "done": false
+    },
+    "https://dombilet.ru/local/templates/dombilet2.0/components/bitrix/catalog.element/.default/img/to-drop.svg": {
+      "file": "assets/56f4690d6680-to-drop.svg",
+      "done": false
+    },
+    "https://dombilet.ru/local/templates/dombilet2.0/components/bitrix/catalog.element/.default/img/minus-white.png": {
+      "file": "assets/1cd9b398645e-minus-white.png",
+      "done": true
+    },
+    "https://dombilet.ru/local/templates/dombilet2.0/components/bitrix/catalog.element/.default/img/plus-white.png": {
+      "file": "assets/558bbaf97b44-plus-white.png",
+      "done": true
+    },
+    "https://dombilet.ru/local/templates/dombilet2.0/components/bitrix/catalog.element/.default/img/icon-timezone.svg": {
+      "file": "assets/018ee240a428-icon-timezone.svg",
+      "done": false
+    },
+    "https://dombilet.ru/local/templates/new_arena/img/sprite.svg#fanid-view": {
+      "file": "assets/6c7fe21cb37f-sprite.svg",
+      "done": false
+    },
+    "https://dombilet.ru/local/templates/new_arena/img/sprite.svg#nofan-view": {
+      "file": "assets/db3b4241118e-sprite.svg",
+      "done": false
+    },
+    "https://dombilet.ru/local/templates/new_arena/img/sprite.svg#soldout-view": {
+      "file": "assets/146be5078177-sprite.svg",
+      "done": false
+    },
+    "https://dombilet.ru/local/templates/new_arena/img/sprite.svg#info-view": {
+      "file": "assets/dc566cbfee56-sprite.svg",
+      "done": false
+    },
+    "https://dombilet.ru/local/templates/new_arena/components/bitrix/news/afisha/bitrix/news.detail/.default/img/fire.svg": {
+      "file": "assets/fa280158b06b-fire.svg",
+      "done": false
+    },
+    "https://dombilet.ru/local/templates/dombilet2.0/components/bitrix/img/icon-orange-time.svg": {
+      "file": "assets/27b648c1407b-icon-orange-time.svg",
+      "done": false
+    },
+    "https://dombilet.ru/local/templates/dombilet2.0/components/bitrix/img/icon-orange-date.svg": {
+      "file": "assets/3d4b44d68f03-icon-orange-date.svg",
+      "done": false
+    },
+    "https://dombilet.ru/local/templates/dombilet2.0/components/bitrix/img/orange-hints-on-map.svg#soldout-view": {
+      "file": "assets/a4de8db43a75-orange-hints-on-map.svg",
+      "done": false
+    },
+    "https://dombilet.ru/local/templates/dombilet2.0/components/bitrix/img/orange-hints-on-map.svg#nofan-view": {
+      "file": "assets/1825a02c1d9d-orange-hints-on-map.svg",
+      "done": false
+    },
+    "https://dombilet.ru/local/templates/dombilet2.0/components/bitrix/img/orange-hints-on-map.svg#info-view": {
+      "file": "assets/2054c67d241b-orange-hints-on-map.svg",
+      "done": false
+    },
+    "https://dombilet.ru/local/templates/dombilet2.0/components/bitrix/img/orange-hints-on-map.svg#fanid-view": {
+      "file": "assets/3204f2f400da-orange-hints-on-map.svg",
+      "done": false
+    },
+    "https://dombilet.ru/local/templates/dombilet2.0/components/bitrix/img/icon-orange-arrow-up.svg": {
+      "file": "assets/b3aae5a3144c-icon-orange-arrow-up.svg",
+      "done": false
+    },
+    "https://dombilet.ru/local/templates/dombilet2.0/components/bitrix/img/icon-orange-oko.svg": {
+      "file": "assets/6d160259cf5c-icon-orange-oko.svg",
+      "done": false
+    },
+    "https://dombilet.ru/fonts/Inter/InterRegular.ttf": {
+      "file": "assets/7970e47a7d22-InterRegular.ttf",
+      "done": false
+    },
+    "https://dombilet.ru/fonts/Inter/Inter-Regular.otf": {
+      "file": "assets/951d2a0c2062-Inter-Regular.otf",
+      "done": false
+    },
+    "https://dombilet.ru/local/templates/dombilet2.0/components/bitrix/catalog.element/.default/fonts/Inter/Inter-Medium.otf": {
+      "file": "assets/7b7cef2b5e99-Inter-Medium.otf",
+      "done": false
+    },
+    "https://dombilet.ru/local/templates/dombilet2.0/components/bitrix/catalog.element/img/svg/icons/search.svg": {
+      "file": "assets/81cfe84da840-search.svg",
+      "done": false
+    },
+    "https://dombilet.ru/local/templates/new_arena/themes/orange/img/svg/icons/up.svg": {
+      "file": "assets/9e7986758522-up.svg",
+      "done": false
+    },
+    "https://dombilet.ru/local/templates/new_arena/themes/orange/img/svg/icons/icon-good.svg": {
+      "file": "assets/c10660650453-icon-good.svg",
+      "done": false
+    },
+    "https://dombilet.ru/local/templates/new_arena/themes/orange/img/svg/icons/icon-email.svg": {
+      "file": "assets/8814ced31e7e-icon-email.svg",
+      "done": false
+    },
+    "https://dombilet.ru/local/templates/new_arena/themes/orange/img/svg/icons/right-gl.svg": {
+      "file": "assets/8d624ae0aaa0-right-gl.svg",
+      "done": false
+    },
+    "https://dombilet.ru/local/templates/dombilet2.0/components/bitrix/catalog.element/.default/": {
+      "file": "assets/cc772a37a3b9-.default",
+      "done": false
+    },
+    "https://dombilet.ru/local/templates/new_arena/components/bitrix/system.pagenavigation/orange/images/arrow_right.svg": {
+      "file": "assets/803c5b676e3b-arrow_right.svg",
+      "done": false
+    },
+    "https://dombilet.ru/local/templates/new_arena/components/bitrix/system.pagenavigation/orange/images/arrow_left.svg": {
+      "file": "assets/48c807823bb4-arrow_left.svg",
+      "done": false
+    },
+    "https://dombilet.ru/local/templates/new_arena/themes/orange/img/svg/down.svg": {
+      "file": "assets/31ff7c70a8c4-down.svg",
+      "done": false
+    },
+    "https://dombilet.ru/local/templates/dombilet2.0/components/bitrix/catalog.element/.default/img/info-to-buy-icon.svg": {
+      "file": "assets/1124977636ba-info-to-buy-icon.svg",
+      "done": false
+    },
+    "https://dombilet.ru/local/templates/dombilet2.0/components/bitrix/catalog.element/.default/img/ticket-separator.svg": {
+      "file": "assets/a067d498c1dd-ticket-separator.svg",
+      "done": false
+    },
+    "https://dombilet.ru/local/templates/dombilet2.0/components/bitrix/catalog.element/.default/img/ticket_top.svg": {
+      "file": "assets/8dd2e8fbefa9-ticket_top.svg",
+      "done": false
+    },
+    "https://dombilet.ru/local/templates/dombilet2.0/components/bitrix/catalog.element/.default/img/ticket_bottom.svg": {
+      "file": "assets/1ed3b7d253a0-ticket_bottom.svg",
+      "done": false
+    },
+    "https://dombilet.ru/local/templates/dombilet2.0/components/bitrix/catalog.element/.default/css/images/layers.png": {
+      "file": "assets/1104c8448563-layers.png",
+      "done": false
+    },
+    "https://dombilet.ru/local/templates/dombilet2.0/components/bitrix/catalog.element/.default/css/images/layers-2x.png": {
+      "file": "assets/8d893d50c10b-layers-2x.png",
+      "done": false
+    },
+    "https://dombilet.ru/local/templates/dombilet2.0/components/bitrix/catalog.element/.default/css/images/marker-icon.png": {
+      "file": "assets/6f6cd1d1e5d0-marker-icon.png",
+      "done": false
+    },
+    "https://fonts.googleapis.com/css?family=Manrope:200,300,regular,500,600,700,800&display=swap": {
+      "file": "assets/386571a9a17c-css.css",
+      "done": true
+    },
+    "https://fonts.googleapis.com/css?family=Bebas+Neue:regular": {
+      "file": "assets/e797c8824001-css.css",
+      "done": true
+    },
+    "https://dombilet.ru/local/templates/dombilet2.0/assets/fonts/icons.woff2": {
+      "file": "assets/7ddc6da6abfd-icons.woff2",
+      "done": true
+    },
+    "https://dombilet.ru/local/templates/dombilet2.0/assets/fonts/icons.woff": {
+      "file": "assets/ca2da122f208-icons.woff",
+      "done": true
+    },
+    "https://dombilet.ru/local/templates/dombilet2.0/assets/img/icons/check.svg": {
+      "file": "assets/566290c29b01-check.svg",
+      "done": true
+    },
+    "https://dombilet.ru/local/templates/dombilet2.0/assets/img/icons/select.svg": {
+      "file": "assets/267dfb804e78-select.svg",
+      "done": true
+    },
+    "https://dombilet.ru/local/templates/dombilet2.0/assets/img/icons/check-or.svg": {
+      "file": "assets/bc8ac14aff50-check-or.svg",
+      "done": true
+    },
+    "https://dombilet.ru/local/templates/dombilet2.0/assets/img/icons/arrow-down.svg": {
+      "file": "assets/5db91ce3f97f-arrow-down.svg",
+      "done": true
+    },
+    "https://dombilet.ru/local/templates/dombilet2.0/assets/img/icons/arrow-left.svg": {
+      "file": "assets/53ddb81d8361-arrow-left.svg",
+      "done": true
+    },
+    "https://dombilet.ru/local/templates/dombilet2.0/assets/img/icons/arrow-right.svg": {
+      "file": "assets/dad7573e1582-arrow-right.svg",
+      "done": true
+    },
+    "https://dombilet.ru/local/templates/dombilet2.0/assets/img/img_cover.svg": {
+      "file": "assets/445824f4b6bb-img_cover.svg",
+      "done": true
+    },
+    "https://dombilet.ru/local/templates/dombilet2.0/assets/img/callback.jpg": {
+      "file": "assets/230ecf245648-callback.jpg",
+      "done": true
+    },
+    "https://dombilet.ru/local/templates/dombilet2.0/assets/img/glass_effect.webp": {
+      "file": "assets/aebf8fee1fe3-glass_effect.webp",
+      "done": true
+    },
+    "https://dombilet.ru/local/templates/dombilet2.0/assets/img/icons/logo_white.svg": {
+      "file": "assets/51ba3ff14a38-logo_white.svg",
+      "done": true
+    },
+    "https://dombilet.ru/local/templates/dombilet2.0/assets/img/form.jpg": {
+      "file": "assets/446cf1b6d7e8-form.jpg",
+      "done": true
+    },
+    "https://dombilet.ru/local/templates/dombilet2.0/assets/img/footer-bg-dark.svg": {
+      "file": "assets/16c9a9b2a780-footer-bg-dark.svg",
+      "done": true
+    },
+    "https://dombilet.ru/local/templates/dombilet2.0/assets/img/icons/max_bg_dark.svg": {
+      "file": "assets/5a3f4d729a92-max_bg_dark.svg",
+      "done": true
+    },
+    "https://dombilet.ru/local/templates/dombilet2.0/assets/img/icons/tg_bg_dark.svg": {
+      "file": "assets/97b5b83fb0f4-tg_bg_dark.svg",
+      "done": true
+    },
+    "https://dombilet.ru/local/templates/dombilet2.0/assets/img/translucent-image.webp": {
+      "file": "assets/0a898f265356-translucent-image.webp",
+      "done": true
+    },
+    "https://dombilet.ru/local/templates/dombilet2.0/assets/img/icons/check-w.svg": {
+      "file": "assets/1922e6845f43-check-w.svg",
+      "done": true
+    },
+    "https://dombilet.ru/local/templates/dombilet2.0/assets/img/icons/close-w.svg": {
+      "file": "assets/a44734a82116-close-w.svg",
+      "done": true
+    },
+    "https://dombilet.ru/local/templates/dombilet2.0/assets/img/bg-present.jpg": {
+      "file": "assets/29c4193e747e-bg-present.jpg",
+      "done": true
+    },
+    "https://dombilet.ru/local/templates/dombilet2.0/assets/img/bg-nominal.jpg": {
+      "file": "assets/b3cf820bd46d-bg-nominal.jpg",
+      "done": true
+    },
+    "https://dombilet.ru/local/templates/dombilet2.0/assets/img/bg-map.jpg": {
+      "file": "assets/374a3fb87dc4-bg-map.jpg",
+      "done": true
+    },
+    "https://dombilet.ru/local/templates/dombilet2.0/assets/img/bg-choice.png": {
+      "file": "assets/958ec9d4a611-bg-choice.png",
+      "done": true
+    },
+    "https://dombilet.ru/local/templates/dombilet2.0/assets/img/bg-platform.jpg": {
+      "file": "assets/67a4cbc0a6c7-bg-platform.jpg",
+      "done": true
+    },
+    "https://dombilet.ru/local/templates/dombilet2.0/assets/img/bg-artist.jpg": {
+      "file": "assets/077b8fe38287-bg-artist.jpg",
+      "done": true
+    },
+    "https://dombilet.ru/local/templates/dombilet2.0/assets/img/bg-teams.jpg": {
+      "file": "assets/6651ba430c8e-bg-teams.jpg",
+      "done": true
+    },
+    "https://dombilet.ru/local/templates/dombilet2.0/assets/img/glass_effect_cropped.webp": {
+      "file": "assets/fa2ddf6418af-glass_effect_cropped.webp",
+      "done": true
+    },
+    "https://dombilet.ru/local/templates/dombilet2.0/assets/img/callback-mob.svg": {
+      "file": "assets/0822d61d08c1-callback-mob.svg",
+      "done": true
+    },
+    "https://dombilet.ru/local/templates/dombilet2.0/assets/img/bg-present-mob.jpg": {
+      "file": "assets/c4c9b9515b0c-bg-present-mob.jpg",
+      "done": true
+    },
+    "https://dombilet.ru/local/templates/dombilet2.0/assets/img/callback.webp": {
+      "file": "assets/1039d756ab46-callback.webp",
+      "done": true
+    },
+    "https://dombilet.ru/local/templates/dombilet2.0/assets/img/form.webp": {
+      "file": "assets/766ef5ceaa31-form.webp",
+      "done": true
+    },
+    "https://dombilet.ru/local/templates/dombilet2.0/assets/img/bg-present.webp": {
+      "file": "assets/c178e13d9bcc-bg-present.webp",
+      "done": true
+    },
+    "https://dombilet.ru/local/templates/dombilet2.0/assets/img/bg-nominal.webp": {
+      "file": "assets/77684ea95c9e-bg-nominal.webp",
+      "done": true
+    },
+    "https://dombilet.ru/local/templates/dombilet2.0/assets/img/bg-map.webp": {
+      "file": "assets/9089593aad3d-bg-map.webp",
+      "done": true
+    },
+    "https://dombilet.ru/local/templates/dombilet2.0/assets/img/bg-choice.webp": {
+      "file": "assets/1f887d2bd0cb-bg-choice.webp",
+      "done": true
+    },
+    "https://dombilet.ru/local/templates/dombilet2.0/assets/img/bg-platform.webp": {
+      "file": "assets/606ac5beab4c-bg-platform.webp",
+      "done": true
+    },
+    "https://dombilet.ru/local/templates/dombilet2.0/assets/img/bg-artist.webp": {
+      "file": "assets/d5e14e8d9ab8-bg-artist.webp",
+      "done": true
+    },
+    "https://dombilet.ru/local/templates/dombilet2.0/assets/img/bg-teams.webp": {
+      "file": "assets/f7cdb1a7e919-bg-teams.webp",
+      "done": true
+    },
+    "https://dombilet.ru/local/templates/dombilet2.0/assets/img/bg-present-mob.webp": {
+      "file": "assets/eb3f3c24a15c-bg-present-mob.webp",
+      "done": true
+    },
+    "https://dombilet.ru/local/templates/dombilet/assets/img/popup-close.svg": {
+      "file": "assets/9452b3a8d2e6-popup-close.svg",
+      "done": true
+    },
+    "https://dombilet.ru/local/templates/dombilet/assets/img/flags/ru.svg": {
+      "file": "assets/b3399f3978e3-ru.svg",
+      "done": true
+    },
+    "https://dombilet.ru/local/templates/dombilet/assets/img/flags/by.svg": {
+      "file": "assets/b4579c215940-by.svg",
+      "done": true
+    },
+    "https://dombilet.ru/local/templates/dombilet/assets/img/flags/kz.svg": {
+      "file": "assets/6de08d49a3e6-kz.svg",
+      "done": true
+    },
+    "https://dombilet.ru/local/templates/dombilet/assets/img/flags/az.svg": {
+      "file": "assets/2348d6bbfe1d-az.svg",
+      "done": true
+    },
+    "https://dombilet.ru/local/templates/dombilet/assets/img/flags/am.svg": {
+      "file": "assets/a04867465545-am.svg",
+      "done": true
+    },
+    "https://dombilet.ru/local/templates/dombilet/assets/img/flags/de.svg": {
+      "file": "assets/59fdf81e37fd-de.svg",
+      "done": true
+    },
+    "https://dombilet.ru/local/templates/dombilet/assets/img/flags/ge.svg": {
+      "file": "assets/f9abd35091de-ge.svg",
+      "done": true
+    },
+    "https://dombilet.ru/local/templates/dombilet/assets/img/flags/cy.svg": {
+      "file": "assets/cf01dbefcbc1-cy.svg",
+      "done": true
+    },
+    "https://dombilet.ru/local/templates/dombilet/assets/img/flags/cn.svg": {
+      "file": "assets/18a7478f922d-cn.svg",
+      "done": true
+    },
+    "https://dombilet.ru/local/templates/dombilet/assets/img/flags/kg.svg": {
+      "file": "assets/662cc5431818-kg.svg",
+      "done": true
+    },
+    "https://dombilet.ru/local/templates/dombilet/assets/img/flags/mn.svg": {
+      "file": "assets/665ff1b0e4a0-mn.svg",
+      "done": true
+    },
+    "https://dombilet.ru/local/templates/dombilet/assets/img/flags/nl.svg": {
+      "file": "assets/ee095c45bad5-nl.svg",
+      "done": true
+    },
+    "https://dombilet.ru/local/templates/dombilet/assets/img/flags/ae.svg": {
+      "file": "assets/2f88562e8454-ae.svg",
+      "done": true
+    },
+    "https://dombilet.ru/local/templates/dombilet/assets/img/flags/pl.svg": {
+      "file": "assets/4c46fa7c820d-pl.svg",
+      "done": true
+    },
+    "https://dombilet.ru/local/templates/dombilet/assets/img/flags/rs.svg": {
+      "file": "assets/d36f0e4d819f-rs.svg",
+      "done": true
+    },
+    "https://dombilet.ru/local/templates/dombilet/assets/img/flags/us.svg": {
+      "file": "assets/c7839b188649-us.svg",
+      "done": true
+    },
+    "https://dombilet.ru/local/templates/dombilet/assets/img/flags/tj.svg": {
+      "file": "assets/377e08712d76-tj.svg",
+      "done": true
+    },
+    "https://dombilet.ru/local/templates/dombilet/assets/img/flags/tm.svg": {
+      "file": "assets/87031fe30d57-tm.svg",
+      "done": true
+    },
+    "https://dombilet.ru/local/templates/dombilet/assets/img/flags/tr.svg": {
+      "file": "assets/47e94f60f827-tr.svg",
+      "done": true
+    },
+    "https://dombilet.ru/local/templates/dombilet/assets/img/flags/uz.svg": {
+      "file": "assets/5c75f29a405d-uz.svg",
+      "done": true
+    },
+    "https://dombilet.ru/local/templates/dombilet/assets/img/flags/un.svg": {
+      "file": "assets/af59eaf2633c-un.svg",
+      "done": true
+    },
+    "https://fonts.gstatic.com/s/manrope/v23/xn7_YHE41ni1AdIRqAuZuw1Bx9mbZk59FN_C-bw.ttf": {
+      "file": "assets/404ba53ff97e-xn7_YHE41ni1AdIRqAuZuw1Bx9mbZk59FN_C-bw.ttf",
+      "done": true
+    },
+    "https://fonts.gstatic.com/s/manrope/v23/xn7_YHE41ni1AdIRqAuZuw1Bx9mbZk6jFN_C-bw.ttf": {
+      "file": "assets/d84752971b68-xn7_YHE41ni1AdIRqAuZuw1Bx9mbZk6jFN_C-bw.ttf",
+      "done": true
+    },
+    "https://fonts.gstatic.com/s/manrope/v23/xn7_YHE41ni1AdIRqAuZuw1Bx9mbZk79FN_C-bw.ttf": {
+      "file": "assets/fa7d2b441a1d-xn7_YHE41ni1AdIRqAuZuw1Bx9mbZk79FN_C-bw.ttf",
+      "done": true
+    },
+    "https://fonts.gstatic.com/s/manrope/v23/xn7_YHE41ni1AdIRqAuZuw1Bx9mbZk7PFN_C-bw.ttf": {
+      "file": "assets/2ddf5e352cd2-xn7_YHE41ni1AdIRqAuZuw1Bx9mbZk7PFN_C-bw.ttf",
+      "done": true
+    },
+    "https://fonts.gstatic.com/s/manrope/v23/xn7_YHE41ni1AdIRqAuZuw1Bx9mbZk4jE9_C-bw.ttf": {
+      "file": "assets/07a56b84a92a-xn7_YHE41ni1AdIRqAuZuw1Bx9mbZk4jE9_C-bw.ttf",
+      "done": true
+    },
+    "https://fonts.gstatic.com/s/manrope/v23/xn7_YHE41ni1AdIRqAuZuw1Bx9mbZk4aE9_C-bw.ttf": {
+      "file": "assets/c67e581e8e52-xn7_YHE41ni1AdIRqAuZuw1Bx9mbZk4aE9_C-bw.ttf",
+      "done": true
+    },
+    "https://fonts.gstatic.com/s/manrope/v23/xn7_YHE41ni1AdIRqAuZuw1Bx9mbZk59E9_C-bw.ttf": {
+      "file": "assets/c7e22ff0a7fb-xn7_YHE41ni1AdIRqAuZuw1Bx9mbZk59E9_C-bw.ttf",
+      "done": true
+    },
+    "https://fonts.gstatic.com/s/bebasneue/v16/JTUSjIg69CK48gW7PXoo9Wlhzg.ttf": {
+      "file": "assets/04c4b988c943-JTUSjIg69CK48gW7PXoo9Wlhzg.ttf",
+      "done": true
+    },
+    "https://fonts.gstatic.com/s/manrope/v23/xn7gYHE41ni1AdIRggOxSvfedN62Zw.woff2": {
+      "file": "assets/manrope-bbf33e318b03.woff2",
+      "done": true
+    },
+    "https://fonts.gstatic.com/s/manrope/v23/xn7gYHE41ni1AdIRggSxSvfedN62Zw.woff2": {
+      "file": "assets/manrope-33697b6d3095.woff2",
+      "done": true
+    },
+    "https://fonts.gstatic.com/s/manrope/v23/xn7gYHE41ni1AdIRggmxSvfedN62Zw.woff2": {
+      "file": "assets/manrope-a04ad571b2fb.woff2",
+      "done": true
+    },
+    "https://fonts.gstatic.com/s/manrope/v23/xn7gYHE41ni1AdIRggqxSvfedN62Zw.woff2": {
+      "file": "assets/manrope-8238ec0eb987.woff2",
+      "done": true
+    },
+    "https://fonts.gstatic.com/s/manrope/v23/xn7gYHE41ni1AdIRggixSvfedN62Zw.woff2": {
+      "file": "assets/manrope-3a7f440a1924.woff2",
+      "done": true
+    },
+    "https://fonts.gstatic.com/s/manrope/v23/xn7gYHE41ni1AdIRggexSvfedN4.woff2": {
+      "file": "assets/manrope-27326e850521.woff2",
+      "done": true
+    }
+  },
+  "failures": [
+    {
+      "url": "https://dombilet.ru/local/templates/dombilet2.0/components/bitrix/catalog.element/img/question-icon.jpg",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://dombilet.ru/local/templates/dombilet2.0/components/bitrix/catalog.element/img/sector_popup__close.svg",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://dombilet.ru/local/templates/dombilet2.0/components/bitrix/catalog.element/.default/img/arrows.svg#arrow-right-view",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://dombilet.ru/local/templates/dombilet2.0/components/bitrix/catalog.element/img/QR.png",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://dombilet.ru/local/templates/dombilet2.0/components/bitrix/catalog.element/.default/img/ticket.png",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://dombilet.ru/local/templates/dombilet2.0/components/bitrix/catalog.element/img/map_table__check.svg",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://dombilet.ru/local/templates/dombilet2.0/components/bitrix/catalog.element/.default/img/arrows.svg#arrow-up-view",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://dombilet.ru/local/templates/dombilet2.0/components/bitrix/catalog.element/img/match_loader__load.gif",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://dombilet.ru/local/templates/dombilet2.0/components/bitrix/catalog.element/.default/img/oko.svg",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://dombilet.ru/local/templates/dombilet2.0/components/bitrix/catalog.element/.default/img/arrows.svg#arrow-down-view",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://dombilet.ru/local/templates/dombilet2.0/components/bitrix/catalog.element/.default/img/icon_date.svg",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://dombilet.ru/local/templates/dombilet2.0/components/bitrix/catalog.element/.default/img/icon_time.svg",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://dombilet.ru/local/templates/dombilet2.0/components/bitrix/catalog.element/.default/img/to-drop.svg",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://dombilet.ru/local/templates/new_arena/img/sprite.svg#nofan-view",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://dombilet.ru/local/templates/new_arena/img/sprite.svg#soldout-view",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://dombilet.ru/local/templates/new_arena/img/sprite.svg#fanid-view",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://dombilet.ru/local/templates/dombilet2.0/components/bitrix/img/icon-orange-time.svg",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://dombilet.ru/local/templates/new_arena/components/bitrix/news/afisha/bitrix/news.detail/.default/img/fire.svg",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://dombilet.ru/local/templates/dombilet2.0/components/bitrix/catalog.element/.default/img/icon-timezone.svg",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://dombilet.ru/local/templates/new_arena/img/sprite.svg#info-view",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://dombilet.ru/local/templates/dombilet2.0/components/bitrix/img/icon-orange-date.svg",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://dombilet.ru/fonts/Inter/InterRegular.ttf",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://dombilet.ru/local/templates/dombilet2.0/components/bitrix/img/orange-hints-on-map.svg#fanid-view",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://dombilet.ru/local/templates/dombilet2.0/components/bitrix/img/orange-hints-on-map.svg#soldout-view",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://dombilet.ru/local/templates/dombilet2.0/components/bitrix/img/orange-hints-on-map.svg#nofan-view",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://dombilet.ru/local/templates/dombilet2.0/components/bitrix/img/icon-orange-arrow-up.svg",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://dombilet.ru/local/templates/dombilet2.0/components/bitrix/img/orange-hints-on-map.svg#info-view",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://dombilet.ru/local/templates/dombilet2.0/components/bitrix/catalog.element/.default/fonts/Inter/Inter-Medium.otf",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://dombilet.ru/fonts/Inter/Inter-Regular.otf",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://dombilet.ru/local/templates/dombilet2.0/components/bitrix/img/icon-orange-oko.svg",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://dombilet.ru/local/templates/dombilet2.0/components/bitrix/catalog.element/img/svg/icons/search.svg",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://dombilet.ru/local/templates/dombilet2.0/components/bitrix/catalog.element/.default/",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://dombilet.ru/local/templates/new_arena/themes/orange/img/svg/icons/up.svg",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://dombilet.ru/local/templates/new_arena/themes/orange/img/svg/icons/icon-good.svg",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://dombilet.ru/local/templates/new_arena/themes/orange/img/svg/icons/icon-email.svg",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://dombilet.ru/local/templates/new_arena/themes/orange/img/svg/icons/right-gl.svg",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://dombilet.ru/local/templates/new_arena/components/bitrix/system.pagenavigation/orange/images/arrow_left.svg",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://dombilet.ru/local/templates/new_arena/components/bitrix/system.pagenavigation/orange/images/arrow_right.svg",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://dombilet.ru/local/templates/new_arena/themes/orange/img/svg/down.svg",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://dombilet.ru/local/templates/dombilet2.0/components/bitrix/catalog.element/.default/img/info-to-buy-icon.svg",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://dombilet.ru/local/templates/dombilet2.0/components/bitrix/catalog.element/.default/img/ticket-separator.svg",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://dombilet.ru/local/templates/dombilet2.0/components/bitrix/catalog.element/.default/img/ticket_top.svg",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://dombilet.ru/local/templates/dombilet2.0/components/bitrix/catalog.element/.default/img/ticket_bottom.svg",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://dombilet.ru/local/templates/dombilet2.0/components/bitrix/catalog.element/.default/css/images/layers.png",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://dombilet.ru/local/templates/dombilet2.0/components/bitrix/catalog.element/.default/css/images/layers-2x.png",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://dombilet.ru/local/templates/dombilet2.0/components/bitrix/catalog.element/.default/css/images/marker-icon.png",
+      "error": "HTTP Error 404: Not Found"
+    }
+  ],
+  "font_fix": {
+    "family": "Manrope",
+    "source": "https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap",
+    "stylesheet": "assets/manrope.css",
+    "subsets": [
+      "cyrillic-ext",
+      "cyrillic",
+      "greek",
+      "vietnamese",
+      "latin-ext",
+      "latin"
+    ]
+  }
+}

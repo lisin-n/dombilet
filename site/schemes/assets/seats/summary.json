@@ -1,0 +1,278 @@
+{
+  "101": {
+    "rows": 24,
+    "seats": 757,
+    "firstRow": "1",
+    "lastRow": "24"
+  },
+  "102": {
+    "rows": 24,
+    "seats": 854,
+    "firstRow": "1",
+    "lastRow": "24"
+  },
+  "103": {
+    "rows": 24,
+    "seats": 838,
+    "firstRow": "1",
+    "lastRow": "24"
+  },
+  "104": {
+    "rows": 24,
+    "seats": 852,
+    "firstRow": "1",
+    "lastRow": "24"
+  },
+  "105": {
+    "rows": 24,
+    "seats": 699,
+    "firstRow": "1",
+    "lastRow": "24"
+  },
+  "106": {
+    "rows": 24,
+    "seats": 703,
+    "firstRow": "1",
+    "lastRow": "24"
+  },
+  "107": {
+    "rows": 24,
+    "seats": 546,
+    "firstRow": "1",
+    "lastRow": "24"
+  },
+  "108": {
+    "rows": 16,
+    "seats": 724,
+    "firstRow": "1",
+    "lastRow": "16"
+  },
+  "110": {
+    "rows": 16,
+    "seats": 709,
+    "firstRow": "1",
+    "lastRow": "16"
+  },
+  "111": {
+    "rows": 24,
+    "seats": 542,
+    "firstRow": "1",
+    "lastRow": "24"
+  },
+  "112": {
+    "rows": 24,
+    "seats": 706,
+    "firstRow": "1",
+    "lastRow": "24"
+  },
+  "113": {
+    "rows": 24,
+    "seats": 694,
+    "firstRow": "1",
+    "lastRow": "24"
+  },
+  "114": {
+    "rows": 24,
+    "seats": 856,
+    "firstRow": "1",
+    "lastRow": "24"
+  },
+  "115": {
+    "rows": 24,
+    "seats": 838,
+    "firstRow": "1",
+    "lastRow": "24"
+  },
+  "116": {
+    "rows": 24,
+    "seats": 854,
+    "firstRow": "1",
+    "lastRow": "24"
+  },
+  "117": {
+    "rows": 24,
+    "seats": 771,
+    "firstRow": "1",
+    "lastRow": "24"
+  },
+  "118": {
+    "rows": 24,
+    "seats": 824,
+    "firstRow": "1",
+    "lastRow": "24"
+  },
+  "119": {
+    "rows": 24,
+    "seats": 494,
+    "firstRow": "1",
+    "lastRow": "24"
+  },
+  "120": {
+    "rows": 17,
+    "seats": 837,
+    "firstRow": "1",
+    "lastRow": "17"
+  },
+  "122": {
+    "rows": 17,
+    "seats": 813,
+    "firstRow": "1",
+    "lastRow": "17"
+  },
+  "123": {
+    "rows": 24,
+    "seats": 546,
+    "firstRow": "1",
+    "lastRow": "24"
+  },
+  "124": {
+    "rows": 24,
+    "seats": 871,
+    "firstRow": "1",
+    "lastRow": "24"
+  },
+  "201": {
+    "rows": 14,
+    "seats": 675,
+    "firstRow": "1",
+    "lastRow": "14"
+  },
+  "202": {
+    "rows": 27,
+    "seats": 1002,
+    "firstRow": "1",
+    "lastRow": "27"
+  },
+  "203": {
+    "rows": 27,
+    "seats": 1002,
+    "firstRow": "1",
+    "lastRow": "27"
+  },
+  "204": {
+    "rows": 27,
+    "seats": 1002,
+    "firstRow": "1",
+    "lastRow": "27"
+  },
+  "205": {
+    "rows": 14,
+    "seats": 675,
+    "firstRow": "1",
+    "lastRow": "14"
+  },
+  "206": {
+    "rows": 14,
+    "seats": 675,
+    "firstRow": "1",
+    "lastRow": "14"
+  },
+  "207": {
+    "rows": 21,
+    "seats": 700,
+    "firstRow": "1",
+    "lastRow": "21"
+  },
+  "208": {
+    "rows": 26,
+    "seats": 1046,
+    "firstRow": "1",
+    "lastRow": "26"
+  },
+  "209": {
+    "rows": 20,
+    "seats": 484,
+    "firstRow": "1",
+    "lastRow": "20"
+  },
+  "210": {
+    "rows": 25,
+    "seats": 1028,
+    "firstRow": "1",
+    "lastRow": "25"
+  },
+  "211": {
+    "rows": 21,
+    "seats": 698,
+    "firstRow": "1",
+    "lastRow": "21"
+  },
+  "212": {
+    "rows": 14,
+    "seats": 589,
+    "firstRow": "1",
+    "lastRow": "14"
+  },
+  "213": {
+    "rows": 18,
+    "seats": 615,
+    "firstRow": "1",
+    "lastRow": "18"
+  },
+  "214": {
+    "rows": 25,
+    "seats": 867,
+    "firstRow": "1",
+    "lastRow": "25"
+  },
+  "215": {
+    "rows": 27,
+    "seats": 962,
+    "firstRow": "1",
+    "lastRow": "27"
+  },
+  "216": {
+    "rows": 25,
+    "seats": 855,
+    "firstRow": "1",
+    "lastRow": "25"
+  },
+  "217": {
+    "rows": 14,
+    "seats": 675,
+    "firstRow": "1",
+    "lastRow": "14"
+  },
+  "218": {
+    "rows": 14,
+    "seats": 491,
+    "firstRow": "1",
+    "lastRow": "14"
+  },
+  "219": {
+    "rows": 21,
+    "seats": 711,
+    "firstRow": "1",
+    "lastRow": "21"
+  },
+  "220": {
+    "rows": 26,
+    "seats": 931,
+    "firstRow": "1",
+    "lastRow": "26"
+  },
+  "221": {
+    "rows": 27,
+    "seats": 1002,
+    "firstRow": "1",
+    "lastRow": "27"
+  },
+  "222": {
+    "rows": 26,
+    "seats": 957,
+    "firstRow": "1",
+    "lastRow": "26"
+  },
+  "223": {
+    "rows": 21,
+    "seats": 711,
+    "firstRow": "1",
+    "lastRow": "21"
+  },
+  "224": {
+    "rows": 14,
+    "seats": 675,
+    "firstRow": "1",
+    "lastRow": "14"
+  }
+}
