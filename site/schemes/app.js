@@ -122,7 +122,6 @@
     $('map-wrap').hidden = view !== 'map';
     $('sector-list').hidden = view !== 'list';
     root.querySelectorAll('[data-view]').forEach(b => { b.classList.toggle('active', b.dataset.view === view); b.setAttribute('aria-pressed', String(b.dataset.view === view)); });
-    $('show-list').textContent = view === 'map' ? 'Сравнить сектора списком ↗' : 'Вернуться к схеме ↗';
     hideTooltip();
   }
   function requestPackage(id) {
@@ -298,7 +297,6 @@
   function applyView(view, box) {
     view.current = constrain(view,box);
     view.svg.setAttribute('viewBox',view.current.map(n=>n.toFixed(2)).join(' '));
-    if (view === currentView()) $('map-scale').textContent = Math.round(view.initial[2]/view.current[2]*100)+'%';
   }
   function animateView(view, target) {
     cancelAnimationFrame(animation);
@@ -422,7 +420,6 @@
   });
   $('zoom-in').addEventListener('click',()=>zoom(.8));
   $('zoom-out').addEventListener('click',()=>zoom(1.25));
-  $('show-list').addEventListener('click',()=>setView(state.view==='map'?'list':'map'));
   root.querySelectorAll('[data-view]').forEach(button=>button.addEventListener('click',()=>setView(button.dataset.view)));
   root.addEventListener('click',event=>{
     const target=event.target.closest('button');

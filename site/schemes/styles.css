@@ -22,3 +22,6 @@ dialog{max-width:calc(100vw - 20px);max-height:calc(100dvh - 24px);border-radius
 .krasnodar-svg .sector-number{font-size:var(--sector-number-size,22px)!important;letter-spacing:0!important}
 .krasnodar-svg .sector-subtitle{font-size:9px!important}
 @media(max-width:760px){.map-stage{height:360px;min-height:300px;max-height:65dvh}.krasnodar-map{height:380px;min-height:320px}.krasnodar-svg{--sector-number-size:28px}}
+
+.map-card .map-wrap{padding-bottom:12px}
+@media(max-width:760px){.map-card .map-wrap{padding-bottom:7px}}
