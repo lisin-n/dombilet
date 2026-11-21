@@ -11,3 +11,11 @@
   .page__bottom-cart[data-scheme-cart] .actions-cart-bottom a{padding:0!important;margin:0!important;display:block}
   .page__bottom-cart[data-scheme-cart] #total_sum{font-size:11px!important;min-height:44px;height:auto;padding:8px!important}
 }
+/* The cart stays reachable while the mobile map is in the browser's top layer. */
+.page__bottom-cart[slot="mobile-scheme-cart"] {
+  position: relative;
+  bottom: auto;
+  flex-shrink: 0;
+  padding-bottom: env(safe-area-inset-bottom);
+  background: #fff;
+}

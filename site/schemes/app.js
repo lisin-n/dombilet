@@ -150,7 +150,7 @@
   }
   function openSector(key) {
     if (!config.sectors[key]) return;
-    lastFocus = document.activeElement;
+    lastFocus = root.activeElement || document.activeElement;
     state.current = key;
     const selectedQty = state.selection?.key === key ? state.selection.qty : 0;
     state.qty = Math.max(0, Math.min(selectedQty, config.sectors[key].left, 10));

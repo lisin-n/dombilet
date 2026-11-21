@@ -28,3 +28,81 @@ dialog{max-width:calc(100vw - 20px);max-height:calc(100dvh - 24px);border-radius
 
 .map-controls{bottom:16px}
 @media(max-width:760px){.map-controls{bottom:9px}}
+
+.mobile-scheme-open { display: none; }
+
+@media (max-width: 760px) {
+  .mobile-scheme-preview {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    border-radius: 18px;
+    background: var(--surface);
+  }
+  .mobile-scheme-preview .map-card {
+    filter: blur(4px);
+    opacity: .56;
+  }
+  .mobile-scheme-preview .map-toolbar,
+  .mobile-scheme-preview .price-legend,
+  .mobile-scheme-preview .map-controls,
+  .mobile-scheme-preview .sector-list { display: none; }
+  .mobile-scheme-preview .map-wrap {
+    display: block !important;
+    padding: 0;
+  }
+  .mobile-scheme-open {
+    display: inline-flex;
+    position: absolute;
+    z-index: 1;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    white-space: nowrap;
+    box-shadow: 0 2px 12px #252a2b26;
+  }
+
+  .mobile-scheme-dialog {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    max-width: none;
+    height: 100%;
+    max-height: none;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    overflow: hidden;
+    background: var(--bg);
+  }
+  .mobile-scheme-dialog[open] {
+    display: flex;
+    flex-direction: column;
+  }
+  .mobile-scheme-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: max(10px, env(safe-area-inset-top)) 12px 10px;
+    background: var(--surface);
+    border-bottom: 1px solid var(--line);
+  }
+  .mobile-scheme-header h2 { font-size: 16px; }
+  .mobile-scheme-header .close-button {
+    width: 44px;
+    height: 44px;
+  }
+  .mobile-scheme-content {
+    flex: 1;
+    min-height: 0;
+    padding: 10px 8px;
+    overflow-y: auto;
+    overscroll-behavior-y: contain;
+  }
+  .mobile-scheme-content .map-stage {
+    height: min(56dvh, 500px);
+    min-height: 240px;
+  }
+}
