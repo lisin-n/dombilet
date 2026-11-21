@@ -4,7 +4,7 @@
   const venue=host.dataset.venue;
   const base=new URL('.',document.currentScript.src);
   const shadow=host.attachShadow({mode:'open'});
-  const version='7';
+  const version='8';
   function script(file){return new Promise((resolve,reject)=>{const tag=document.createElement('script');tag.src=new URL(file+'?v='+version,base).href;tag.onload=resolve;tag.onerror=reject;document.body.append(tag);});}
   async function start(){
     const response=await fetch(new URL('widget-'+venue+'.html?v='+version,base),{cache:'no-store'});

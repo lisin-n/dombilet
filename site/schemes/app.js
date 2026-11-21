@@ -332,7 +332,8 @@
     stage.querySelectorAll('.is-hovered').forEach(n=>n.classList.remove('is-hovered'));
     group.classList.add('is-hovered');
     const tip=$('map-tooltip');
-    tip.innerHTML=`<strong>${html(sector.name)}</strong><span class="tooltip-price">${available(key)?money(priceFor(key)): 'Нет в продаже'}</span><p class="tooltip-stock">${html(stockText(key))}</p>`;
+    const canBuy=available(key);
+    tip.innerHTML=`<strong>${html(sector.name)}</strong><span class="tooltip-price">${canBuy?money(priceFor(key)): 'Нет в продаже'}</span>${canBuy?`<p class="tooltip-stock">${html(stockText(key))}</p>`:''}`;
     tip.hidden=false;
     const rect=stage.getBoundingClientRect();
     const gx=event.clientX-rect.x,gy=event.clientY-rect.y;
