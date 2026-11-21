@@ -21,7 +21,7 @@
   const sectorDialog = $('sector-dialog');
   const views = new Map([...stage.querySelectorAll('svg.map-svg')].map(svg => {
     const initial = svg.getAttribute('viewBox').trim().split(/[ ,]+/).map(Number);
-    return [svg.dataset.orient, { svg, initial, landscape: [...initial], current: [...initial] }];
+    return [svg.dataset.orient, { svg, initial, landscape: initial, bounds: initial, current: [...initial] }];
   }));
   const pointers = new Map();
   let gesture = null, pinch = null, animation = 0, lastFocus = null;
@@ -324,7 +324,7 @@
   },true);
   function currentView() { return [...views.values()].find(v=>getComputedStyle(v.svg).display!=='none') || [...views.values()][0]; }
   function constrain(view, box) {
-    const base = view.initial;
+    const base = view.bounds;
     const factor = Math.max(.22,Math.min(1,box[2]/base[2]));
     box[2] = base[2]*factor; box[3] = base[3]*factor;
     box[0] = Math.max(base[0],Math.min(base[0]+base[2]-box[2],box[0]));
@@ -335,6 +335,28 @@
     view.current = constrain(view,box);
     view.svg.setAttribute('viewBox',view.current.map(n=>n.toFixed(2)).join(' '));
   }
+  function resizeMap() {
+    const {width, height} = stage.getBoundingClientRect();
+    if (!width || !height) return;
+    const fillViewport = stage.closest('.mobile-scheme-dialog[open]');
+    for (const view of views.values()) {
+      const [x, y, w, h] = view.initial;
+      const newHeight = fillViewport ? Math.max(h, w * height / width) : h;
+      const newWidth = fillViewport ? Math.max(w, h * width / height) : w;
+      if (newWidth === view.bounds[2] && newHeight === view.bounds[3]) continue;
+      cancelAnimationFrame(animation);
+      const [currentX, currentY, currentWidth, currentHeight] = view.current;
+      const zoom = currentWidth / view.bounds[2];
+      view.bounds = [x + (w - newWidth) / 2, y + (h - newHeight) / 2, newWidth, newHeight];
+      applyView(view, [
+        currentX + (currentWidth - newWidth * zoom) / 2,
+        currentY + (currentHeight - newHeight * zoom) / 2,
+        newWidth * zoom,
+        newHeight * zoom,
+      ]);
+    }
+  }
+  new ResizeObserver(resizeMap).observe(stage);
   function animateView(view, target) {
     cancelAnimationFrame(animation);
     target=constrain(view,target); const start=[...view.current],t0=performance.now();
@@ -353,7 +375,7 @@
   function zoom(factor,x,y,animated=true) {
     const view=currentView(),box=[...view.current],rect=view.svg.getBoundingClientRect();
     const center=pointInSvg(view,x??rect.x+rect.width/2,y??rect.y+rect.height/2);
-    const w=Math.min(view.initial[2],Math.max(view.initial[2]*.22,box[2]*factor)),ratio=w/box[2];
+    const w=Math.min(view.bounds[2],Math.max(view.bounds[2]*.22,box[2]*factor)),ratio=w/box[2];
     const next=[center.x-(center.x-box[0])*ratio,center.y-(center.y-box[1])*ratio,w,box[3]*ratio];
     if(animated) animateView(view,next); else applyView(view,next);
   }
@@ -503,8 +525,13 @@
   if(hero.src && $('event-visual'))$('event-visual').style.backgroundImage=`url("${photoPath(hero)}")`;
   window.DomBiletScheme={...(window.DomBiletScheme||{}),open:openSector,clear:()=>{$('clear-selection').click();}};
   const phoneLayout=matchMedia('(max-width:760px)');
-  function fitLayout(){
-    views.forEach(view=>{view.initial=phoneLayout.matches&&!isYas?[-15,-60,1000,850]:[...view.landscape];applyView(view,[...view.initial]);});
+  function fitLayout() {
+    views.forEach(view => {
+      view.initial = phoneLayout.matches && !isYas ? [-65,-60,1100,850] : view.landscape;
+      view.bounds = view.initial;
+      applyView(view, [...view.bounds]);
+    });
+    resizeMap();
   }
   phoneLayout.addEventListener('change',fitLayout);
   fitLayout();

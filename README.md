@@ -31,4 +31,4 @@ python3 -m http.server 5187
 
 ## Источники
 
-Оболочка страницы: [DomBilet](https://dombilet.ru/). Схемы секторов, кресел и фотографии — материалы проекта. Окружение Ozon Арены построено по данным © [OpenStreetMap contributors](https://www.openstreetmap.org/copyright), ODbL 1.0, и сверено с [генпланом gmp](https://www.gmp.de/en/projects/670/park-and-fc-krasnodar-stadium). Ссылки атрибуции сохранены на карте.
+Оболочка страницы: [DomBilet](https://dombilet.ru/). Схемы секторов, кресел и фотографии — материалы проекта. Окружение Ozon Арены — схематичный рисунок по расположению ориентиров на [генплане gmp](https://www.gmp.de/en/projects/670/park-and-fc-krasnodar-stadium).
