@@ -31,6 +31,25 @@ dialog{max-width:calc(100vw - 20px);max-height:calc(100dvh - 24px);border-radius
 
 .mobile-scheme-open { display: none; }
 
+.price-chip {
+  min-height: 26px;
+  cursor: pointer;
+}
+.price-chip:hover {
+  background: color-mix(in srgb, var(--chip) 15%, white);
+}
+.price-chip[aria-pressed="true"] {
+  border-color: var(--chip);
+  background: color-mix(in srgb, var(--chip) 22%, white);
+  box-shadow: inset 0 0 0 1px var(--chip);
+  color: #252a2b;
+}
+.map-svg .sector-name.is-filtered,
+.map-svg .sector-label-link.is-filtered {
+  opacity: .28;
+  pointer-events: none;
+}
+
 .map-credit {
   position: absolute;
   bottom: 0;

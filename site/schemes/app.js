@@ -11,7 +11,7 @@
   const defaults = { packageId: 'four', current: null, selection: null, seats: {}, filter: 'all', view: 'map' };
   let saved = {};
   try { saved = JSON.parse(sessionStorage.getItem(storageKey) || '{}'); } catch {}
-  const state = { ...defaults, ...saved, qty: 0, filter: 'all', view: 'map' };
+  const state = { ...defaults, ...saved, qty: 0, filter: 'all', priceFilter: null, view: 'map' };
   if (!config.sectors[state.current]) state.current = null;
   if (state.selection && !config.sectors[state.selection.key]) state.selection = null;
   if (!state.seats || typeof state.seats !== 'object') state.seats = {};
@@ -46,8 +46,16 @@
     return config.packages.find(p => p.id === packageId).prices[key] ?? basePrice;
   }
   const available = (key, packageId = state.packageId) => config.sectors[key].left > 0 && (!isYas || !config.packages.find(p => p.id === packageId).unavailable.includes(key));
-  function matchesFilter(sector) {
+  function matchesCategory(sector) {
     return state.filter === 'all' || (state.filter === 'premium' ? ['vip', 'business', 'premium'].includes(sector.category) : sector.category === state.filter);
+  }
+  function priceFilterKey(sector) {
+    if (!isYas) return String(sector.price);
+    return sector.category === 'premium' ? 'premium' : sector.id;
+  }
+  function matchesFilter(sector) {
+    return matchesCategory(sector) && (!state.priceFilter ||
+      (available(sector.id) && priceFilterKey(sector) === state.priceFilter));
   }
   function notify(message) {
     $('toast').textContent = message;
@@ -69,18 +77,19 @@
     $('filter-tabs').innerHTML = config.filters.map(f => `<button type="button" data-filter="${f.id}" class="${state.filter === f.id ? 'active' : ''}" aria-pressed="${state.filter === f.id}">${html(f.name)}</button>`).join('');
   }
   function renderLegend() {
+    const matching = Object.values(config.sectors).filter(s => available(s.id) && matchesCategory(s));
     let chips;
     if (isYas) {
-      const matching = Object.values(config.sectors).filter(s => available(s.id) && matchesFilter(s));
-      chips = matching.filter(s => s.category !== 'premium').sort((a,b) => priceFor(a.id)-priceFor(b.id)).map(s => ({color:s.color,price:priceFor(s.id),name:s.name.replace(' Grandstand','').replace('General Admission · ','')}));
+      chips = matching.filter(s => s.category !== 'premium').sort((a,b) => priceFor(a.id)-priceFor(b.id)).map(s => ({key:priceFilterKey(s),color:s.color,price:priceFor(s.id),name:s.name.replace(' Grandstand','').replace('General Admission · ','')}));
       const premium = matching.filter(s => s.category === 'premium');
-      if(premium.length) chips.push({color:'#7954B4',price:Math.min(...premium.map(s=>priceFor(s.id))),name:'Премиум · от'});
+      if(premium.length) chips.push({key:'premium',color:'#7954B4',price:Math.min(...premium.map(s=>priceFor(s.id))),name:'Премиум · от'});
     } else {
       const bands = new Map();
-      Object.values(config.sectors).filter(s => available(s.id) && matchesFilter(s)).forEach(s => bands.set(s.price,{color:s.color,price:s.price}));
+      matching.forEach(s => bands.set(s.price,{key:priceFilterKey(s),color:s.color,price:s.price}));
       chips = [...bands.values()].sort((a,b) => a.price-b.price);
     }
-    $('price-legend').innerHTML = chips.map(c => `<span class="price-chip" style="--chip:${c.color}"><i></i>${c.name ? `<small>${html(c.name)}</small>` : ''}${money(c.price)}</span>`).join('');
+    if (!chips.some(chip => chip.key === state.priceFilter)) state.priceFilter = null;
+    $('price-legend').innerHTML = chips.map(c => `<button type="button" class="price-chip" data-price-filter="${html(c.key)}" aria-pressed="${c.key === state.priceFilter}" style="--chip:${c.color}"><i aria-hidden="true"></i>${c.name ? `<small>${html(c.name)}</small>` : ''}${money(c.price)}</button>`).join('');
   }
   function textColor(color) {
     const hex = color.replace('#','');
@@ -88,6 +97,14 @@
     return (r*299+g*587+b*114)/1000 > 155 ? '#323d36' : '#ffffff';
   }
   function renderMap() {
+    stage.querySelectorAll('.sector-name[data-sector], .sector-label-link[data-sector]').forEach(label => {
+      const sector = config.sectors[label.dataset.sector];
+      if (!sector) return;
+      const filtered = !matchesFilter(sector);
+      label.classList.toggle('is-filtered', filtered);
+      label.setAttribute('tabindex', filtered ? '-1' : '0');
+      label.setAttribute('aria-disabled', String(filtered));
+    });
     stage.querySelectorAll('.sector[data-sector]').forEach(group => {
       const key = group.dataset.sector, sector = config.sectors[key];
       if (!sector) return;
@@ -127,6 +144,16 @@
     $('sector-list').hidden = view !== 'list';
     root.querySelectorAll('[data-view]').forEach(b => { b.classList.toggle('active', b.dataset.view === view); b.setAttribute('aria-pressed', String(b.dataset.view === view)); });
     hideTooltip();
+  }
+  function togglePriceFilter(key) {
+    state.priceFilter = state.priceFilter === key ? null : key;
+    $('price-legend').querySelectorAll('[data-price-filter]').forEach(button => {
+      button.setAttribute('aria-pressed', String(button.dataset.priceFilter === state.priceFilter));
+    });
+    renderMap();
+    renderList();
+    hideTooltip();
+    if (state.priceFilter && !stage.querySelector('.sector[data-sector]:not(.is-filtered)')) setView('list');
   }
   function requestPackage(id) {
     if (id === state.packageId) { packageExpanded = false; if (sectorDialog.open) renderModal(); return; }
@@ -424,7 +451,11 @@
     const offer=event.target.closest('[data-offer-group]');
     if(offer&&['Enter',' '].includes(event.key)){event.preventDefault();openOfferGroup(offer.dataset.offerGroup);return;}
     const group=event.target.closest('[data-sector]');
-    if(group&&['Enter',' '].includes(event.key)){event.preventDefault();openSector(group.dataset.sector);}
+    if(group&&['Enter',' '].includes(event.key)){
+      event.preventDefault();
+      const sector = config.sectors[group.dataset.sector];
+      if (sector && matchesFilter(sector)) openSector(sector.id);
+    }
     else if(['+','='].includes(event.key)){event.preventDefault();zoom(.8);}
     else if(event.key==='-'){event.preventDefault();zoom(1.25);}
   });
@@ -435,7 +466,8 @@
     const target=event.target.closest('button');
     if(!target)return;
     if(target.dataset.package){requestPackage(target.dataset.package);return;}
-    if(target.dataset.filter){state.filter=target.dataset.filter;renderFilters();renderLegend();renderMap();renderList();return;}
+    if(target.dataset.priceFilter){togglePriceFilter(target.dataset.priceFilter);return;}
+    if(target.dataset.filter){state.filter=target.dataset.filter;state.priceFilter=null;renderFilters();renderLegend();renderMap();renderList();hideTooltip();return;}
     if(target.dataset.openSector){if($('nearby-dialog').open)$('nearby-dialog').close();openSector(target.dataset.openSector);return;}
     if(target.dataset.close){$(target.dataset.close).close();return;}
     if(target.hasAttribute('data-qty')){setQuantity(Number(target.dataset.qty));return;}
