@@ -25,3 +25,6 @@ dialog{max-width:calc(100vw - 20px);max-height:calc(100dvh - 24px);border-radius
 
 .map-card .map-wrap{padding-bottom:12px}
 @media(max-width:760px){.map-card .map-wrap{padding-bottom:7px}}
+
+.map-controls{bottom:16px}
+@media(max-width:760px){.map-controls{bottom:9px}}
