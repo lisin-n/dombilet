@@ -12,6 +12,26 @@ CATALOG = json.loads((SCHEMES / 'data.js').read_text().split('=', 1)[1].strip().
 SVG_PATTERN = r'<svg\b(?=[^>]*data-orient="[lp]")[\s\S]*?</svg>'
 LATEST = ET.fromstring(re.search(SVG_PATTERN, (MAPS / 'yas-marina-latest.html').read_text())[0])
 REFERENCE = ET.fromstring(re.search(SVG_PATTERN, (SCHEMES / 'widget-yas.html').read_text())[0])
+ILLUSTRATION_PIVOT = complex(1250, 990)
+
+# Centres in the landscape view. These zones follow the illustrated track's
+# local curves, which differ from the source SVG around the straights and hairpins.
+TRACKSIDE_POSITIONS = {
+    'west-straight': (1208, 1263),
+    'club58': (1270, 1327),
+    'yas-suite-west': (1458, 1385),
+    'west-club': (1540, 1361),
+    'turn-at-west': (1622, 1308),
+    'marsa-suite': (1807, 1213),
+    'deck-at-9': (1918, 586),
+    'south-club': (2131, 686),
+    'north-straight': (718, 1100),
+    'sunset-lounge': (693, 861),
+    'trackside-at-sunset-lounge': (664, 867),
+    'lounge-north': (361, 982),
+    'shams-suite': (565, 1101),
+    'north-straight-premium': (709, 1124),
+}
 
 
 def sectors(svg):
@@ -58,10 +78,13 @@ rotation = sum((point - reference_mean) * (source_center(key) - source_mean).con
 
 def draw_zone(key, group, orientation):
     source = source_center(key)
-    anchor = ZONES[key]['parent'] or min(anchors, key=lambda item: abs(source - source_center(item)))
-    if anchor == 'north-straight':
-        anchor = 'north'
-    origin = anchors[anchor] - rotation * source_center(anchor)
+    if key in TRACKSIDE_POSITIONS:
+        landscape = complex(*TRACKSIDE_POSITIONS[key])
+        centre = ILLUSTRATION_PIVOT + 1j * (landscape - ILLUSTRATION_PIVOT)
+    else:
+        anchor = ZONES[key]['parent'] or min(anchors, key=lambda item: abs(source - source_center(item)))
+        centre = anchors[anchor] + rotation * (source - source_center(anchor))
+    origin = centre - rotation * source
     transform = f'matrix({rotation.real:.5f} {rotation.imag:.5f} {-rotation.imag:.5f} {rotation.real:.5f} {origin.real:.2f} {origin.imag:.2f})'
     name = html.escape(CATALOG[key]['name'], quote=True)
     geometry = ''.join(render_geometry(group))
@@ -84,12 +107,14 @@ def draw_zone(key, group, orientation):
 
 extra = {key: group for key, group in sectors(LATEST).items() if key not in original}
 assert set(original) | extra.keys() == CATALOG.keys()
+assert TRACKSIDE_POSITIONS.keys() <= extra.keys()
 
 
 def update_svg(match):
     svg = match[0]
     orientation = 'l' if 'data-orient="l"' in svg else 'p'
-    transform = ' transform="rotate(-90 1250 990)"' if orientation == 'l' else ''
+    pivot = f'{ILLUSTRATION_PIVOT.real:g} {ILLUSTRATION_PIVOT.imag:g}'
+    transform = f' transform="rotate(-90 {pivot})"' if orientation == 'l' else ''
     zones = '\n'.join(draw_zone(key, group, orientation) for key, group in extra.items())
     layer = f'<g class="yas-zone-layer"{transform}>\n{zones}\n</g>'
     svg, updated = re.subn(r'<g class="(?:catalog-marker|yas-zone)-layer"[^>]*>[\s\S]*</g>(?=</svg>)',
