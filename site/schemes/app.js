@@ -8,10 +8,10 @@
   const money = value => new Intl.NumberFormat('ru-RU').format(value) + ' ₽';
   const photoPath = photo => '../schemes/' + photo.src;
   const storageKey = 'dombilet-scheme-v1-' + config.key;
-  const defaults = { packageId: 'four', current: null, qty: 2, selection: null, seats: {}, filter: 'all', view: 'map' };
+  const defaults = { packageId: 'four', current: null, selection: null, seats: {}, filter: 'all', view: 'map' };
   let saved = {};
   try { saved = JSON.parse(sessionStorage.getItem(storageKey) || '{}'); } catch {}
-  const state = { ...defaults, ...saved, filter: 'all', view: 'map' };
+  const state = { ...defaults, ...saved, qty: 0, filter: 'all', view: 'map' };
   if (!config.sectors[state.current]) state.current = null;
   if (state.selection && !config.sectors[state.selection.key]) state.selection = null;
   if (!state.seats || typeof state.seats !== 'object') state.seats = {};
@@ -37,7 +37,7 @@
   });
 
   function save() {
-    try { sessionStorage.setItem(storageKey, JSON.stringify({ packageId: state.packageId, current: state.current, qty: state.qty, selection: state.selection, seats: state.seats })); } catch {}
+    try { sessionStorage.setItem(storageKey, JSON.stringify({ packageId: state.packageId, current: state.current, selection: state.selection, seats: state.seats })); } catch {}
   }
   const packageNow = () => config.packages.find(p => p.id === state.packageId);
   function priceFor(key, packageId = state.packageId) {
@@ -141,6 +141,7 @@
     const oldKey = state.current;
     state.packageId = id;
     state.selection = null;
+    state.qty = 0;
     packageExpanded = false;
     render(); save();
     if (sectorDialog.open) renderModal();
@@ -150,9 +151,9 @@
   function openSector(key) {
     if (!config.sectors[key]) return;
     lastFocus = document.activeElement;
-    if (state.current !== key) state.qty = state.selection?.key === key ? state.selection.qty : 2;
     state.current = key;
-    state.qty = Math.max(1, Math.min(state.qty, config.sectors[key].left || 1));
+    const selectedQty = state.selection?.key === key ? state.selection.qty : 0;
+    state.qty = Math.max(0, Math.min(selectedQty, config.sectors[key].left, 10));
     modalMode = 'info'; packageExpanded = false;
     renderModal(); renderMap(); hideTooltip(); save();
     if (!sectorDialog.open) sectorDialog.showModal();
@@ -178,7 +179,7 @@
     if (modalMode === 'seats') { renderSeats(); return; }
     const photo = sector.photo;
     const badge = sector.type === 'ga' ? 'Без закреплённых мест' : sector.type === 'seats' ? 'Выбор мест на схеме' : 'Места назначаются позднее';
-    $('modal-scroll').innerHTML = `<div class="sector-body">${photo.src ? `<figure class="sector-media"><div class="sector-photo"><img src="${html(photoPath(photo))}" alt="${html(photo.caption)}" width="${photo.width}" height="${photo.height}"><button type="button" class="photo-enlarge" data-enlarge-photo>Увеличить ↗</button></div><figcaption><b>${html(photo.caption)}</b>${photo.kind === 'render' ? ' · 3D-визуализация' : ''}${photo.credit ? ' · ' + html(photo.credit) : ''}</figcaption><p class="photo-disclaimer">${html(photo.note || 'Обзор зависит от ряда и места.')}</p></figure>` : ''}<div class="sector-copy"><span class="placement-badge ${sector.type === 'ga' ? 'ga' : ''}">${html(badge)}</span><p class="sector-description">${html(sector.about)}</p><ul class="sector-features">${sector.feats.map(f => `<li>${html(f)}</li>`).join('')}</ul>${sector.limit ? `<p class="sector-limitation">${html(sector.limit)}</p>` : ''}${packageInlineHtml()}<div class="price-stock"><div><p class="modal-price-label">${isYas ? 'За 1 человека · весь пакет' : 'За один билет'}</p><p class="modal-price">${money(priceFor(sector.id))}</p></div><span class="stock">${sector.left} в наличии</span></div>${sector.type !== 'seats' ? `<div class="qty-section"><label id="qty-label">Количество билетов</label><div class="quantity" aria-labelledby="qty-label"><button type="button" data-qty="-1" aria-label="Уменьшить количество" ${state.qty <= 1 ? 'disabled' : ''}>−</button><output id="quantity">${state.qty}</output><button type="button" data-qty="1" aria-label="Увеличить количество" ${state.qty >= Math.min(sector.left,10) ? 'disabled' : ''}>+</button></div></div>` : ''}<p class="placement-note">${placementHtml(sector)}</p></div></div>`;
+    $('modal-scroll').innerHTML = `<div class="sector-body">${photo.src ? `<figure class="sector-media"><div class="sector-photo"><img src="${html(photoPath(photo))}" alt="${html(photo.caption)}" width="${photo.width}" height="${photo.height}"><button type="button" class="photo-enlarge" data-enlarge-photo>Увеличить ↗</button></div><figcaption><b>${html(photo.caption)}</b>${photo.kind === 'render' ? ' · 3D-визуализация' : ''}${photo.credit ? ' · ' + html(photo.credit) : ''}</figcaption><p class="photo-disclaimer">${html(photo.note || 'Обзор зависит от ряда и места.')}</p></figure>` : ''}<div class="sector-copy"><span class="placement-badge ${sector.type === 'ga' ? 'ga' : ''}">${html(badge)}</span><p class="sector-description">${html(sector.about)}</p><ul class="sector-features">${sector.feats.map(f => `<li>${html(f)}</li>`).join('')}</ul>${sector.limit ? `<p class="sector-limitation">${html(sector.limit)}</p>` : ''}${packageInlineHtml()}<div class="price-stock"><div><p class="modal-price-label">${isYas ? 'За 1 человека · весь пакет' : 'За один билет'}</p><p class="modal-price">${money(priceFor(sector.id))}</p></div><span class="stock">${sector.left} в наличии</span></div>${sector.type !== 'seats' ? `<div class="qty-section"><label id="qty-label">Количество билетов</label><div class="quantity" aria-labelledby="qty-label"><button type="button" data-qty="-1" aria-label="Уменьшить количество" ${state.qty === 0 ? 'disabled' : ''}>−</button><output id="quantity">${state.qty}</output><button type="button" data-qty="1" aria-label="Увеличить количество" ${state.qty >= Math.min(sector.left,10) ? 'disabled' : ''}>+</button></div></div>` : ''}<p class="placement-note">${placementHtml(sector)}</p></div></div>`;
     renderModalFooter();
   }
   function renderUnavailable(sector) {
@@ -220,26 +221,31 @@
     const qty = seatsMode ? chosen.length : state.qty;
     const total = priceFor(sector.id)*qty;
     let caption = isYas ? `Итого за ${qty} ${qty === 1 ? 'билет' : 'билета'} · весь пакет` : seatsMode && qty ? seatStatus(chosen) : 'За один билет';
+    if (!seatsMode && !qty && isYas) caption = 'За один билет · весь пакет';
     if (seatsMode && modalMode === 'info') caption = chosen.length ? seatStatus(chosen) : 'За один билет · точная сумма после выбора мест';
     const buttonLabel = seatsMode && modalMode === 'info' ? (chosen.length ? 'Посмотреть места →' : 'Выбрать места →') : 'Продолжить покупку →';
-    $('modal-footer').innerHTML = `<div><strong class="footer-total">${qty ? money(total) : 'от ' + money(priceFor(sector.id))}</strong><span class="footer-caption">${html(caption)}</span></div><button type="button" class="button button-primary" data-modal-continue ${seatsMode && modalMode === 'seats' && (!chosen.length || !contiguous(chosen)) ? 'disabled' : ''}>${buttonLabel}</button>`;
+    const canContinue = (seatsMode && modalMode === 'info') || (qty > 0 && (!seatsMode || contiguous(chosen)));
+    $('modal-footer').innerHTML = `<div><strong class="footer-total">${qty ? money(total) : 'от ' + money(priceFor(sector.id))}</strong><span class="footer-caption">${html(caption)}</span></div><button type="button" class="button button-primary" data-modal-continue ${canContinue ? '' : 'disabled'}>${buttonLabel}</button>`;
   }
   function setQuantity(delta) {
     const sector = config.sectors[state.current];
-    state.qty = Math.max(1, Math.min(10, sector.left, state.qty+delta));
-    state.selection = { key: state.current, qty: state.qty, packageId: state.packageId, type: sector.type };
+    const qty = Math.max(0, Math.min(10, sector.left, state.qty + delta));
+    if (qty === state.qty) return;
+    state.qty = qty;
+    state.selection = qty > 0 ? { key: sector.id, qty, packageId: state.packageId, type: sector.type } : null;
     const output = $('quantity');
     if (output) output.textContent = state.qty;
-    sectorDialog.querySelector('[data-qty="-1"]').disabled = state.qty <= 1;
+    sectorDialog.querySelector('[data-qty="-1"]').disabled = state.qty === 0;
     sectorDialog.querySelector('[data-qty="1"]').disabled = state.qty >= Math.min(sector.left,10);
     renderModalFooter(); renderTray(); save();
-    $('live-status').textContent = `${state.qty} билета, ${money(priceFor(sector.id)*state.qty)}`;
+    $('live-status').textContent = qty ? `Выбрано билетов: ${qty} · ${money(priceFor(sector.id) * qty)}` : 'Билеты не выбраны.';
   }
   function continueSelection() {
     const sector = config.sectors[state.current];
     if (sector.type === 'seats' && modalMode === 'info') { modalMode = 'seats'; renderModal(); $('modal-scroll').scrollTop = 0; return; }
     if (sector.type === 'seats' && (!seatSelection().length || !contiguous())) return;
     const qty = sector.type === 'seats' ? seatSelection().length : state.qty;
+    if (qty <= 0) return;
     state.selection = {key:sector.id,qty,type:sector.type,packageId:state.packageId};
     save(); renderTray();
     closeSector();
@@ -449,7 +455,7 @@
   $('close-sector').addEventListener('click',closeSector);
   $('how-to')?.addEventListener('click',()=>{$('help-dialog').showModal();});
   $('resume-selection').addEventListener('click',checkoutSelection);
-  $('clear-selection').addEventListener('click',()=>{state.selection=null;state.seats={};state.current=null;renderTray();renderMap();save();notify('Выбор сброшен.');});
+  $('clear-selection').addEventListener('click',()=>{state.selection=null;state.seats={};state.current=null;state.qty=0;renderTray();renderMap();save();notify('Выбор сброшен.');});
   root.querySelectorAll('dialog').forEach(dialog=>{
     dialog.addEventListener('click',event=>{
       if(event.target!==dialog)return;
