@@ -32,3 +32,5 @@ python3 -m http.server 5187
 ## Источники
 
 Оболочка страницы: [DomBilet](https://dombilet.ru/). Схемы секторов, кресел и фотографии — материалы проекта. Окружение Ozon Арены — схематичный рисунок по расположению ориентиров на [генплане gmp](https://www.gmp.de/en/projects/670/park-and-fc-krasnodar-stadium).
+
+Расположение ориентиров для расширенных схем сверено с материалами [академии ФК «Краснодар»](https://sch.fckrasnodar.ru/wp-content/uploads/2020/02/%D0%9F%D0%B0%D1%81%D0%BF%D0%BE%D1%80%D1%82-%D0%B4%D0%BE%D1%80%D0%BE%D0%B6%D0%BD%D0%BE%D0%B9-%D0%B1%D0%B5%D0%B7%D0%BE%D0%BF%D0%B0%D1%81%D0%BD%D0%BE%D1%81%D1%82%D0%B8.pdf) и [организаторов Гран-при Абу-Даби](https://www.fia.com/sites/default/files/adgp_f1_media_guide_2024.pdf).
