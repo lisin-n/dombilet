@@ -371,7 +371,7 @@
     $('nearby-dialog').showModal();
   }
   stage.addEventListener('pointerdown',event=>{
-    if(event.target.closest('button')||event.button>0)return;
+    if(event.target.closest('button, a')||event.button>0)return;
     cancelAnimationFrame(animation);hideTooltip();
     const view=currentView();
     pointers.set(event.pointerId,{x:event.clientX,y:event.clientY});
