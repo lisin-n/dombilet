@@ -31,6 +31,11 @@ dialog{max-width:calc(100vw - 20px);max-height:calc(100dvh - 24px);border-radius
   stroke-linejoin: round;
 }
 .yas-reference-map .surrounding-labels { font-size: 29px; }
+.yas-reference-map .dbs-sectors .sector.is-unavailable .sec-shape {
+  fill: url(#v-na) #dfe2e7;
+  stroke: #d0d4da;
+}
+.yas-reference-map .dbs-sectors .sector.is-unavailable polyline { stroke: #d0d4da; }
 .yas-reference-map .hill-label {
   fill: #fff;
   font: 800 27px Manrope, Arial, sans-serif;

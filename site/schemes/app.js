@@ -14,7 +14,7 @@
   const state = { ...defaults, ...saved, qty: 0, filter: 'all', view: 'map' };
   const selectedPrices = new Set();
   if (!config.sectors[state.current]) state.current = null;
-  if (state.selection && !config.sectors[state.selection.key]) state.selection = null;
+  if (state.selection && !config.sectors[state.selection.key]?.left) state.selection = null;
   if (!state.seats || typeof state.seats !== 'object') state.seats = {};
   if (isYas) state.packageId = 'four';
   let modalMode = 'info', pendingPackage = null, packageExpanded = false, toastTimer;
