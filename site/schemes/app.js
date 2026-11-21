@@ -40,7 +40,11 @@
     try { sessionStorage.setItem(storageKey, JSON.stringify({ packageId: state.packageId, current: state.current, qty: state.qty, selection: state.selection, seats: state.seats })); } catch {}
   }
   const packageNow = () => config.packages.find(p => p.id === state.packageId);
-  const priceFor = (key, packageId = state.packageId) => isYas ? config.packages.find(p => p.id === packageId).prices[key] : config.sectors[key].price;
+  function priceFor(key, packageId = state.packageId) {
+    const basePrice = config.sectors[key].price;
+    if (!isYas) return basePrice;
+    return config.packages.find(p => p.id === packageId).prices[key] ?? basePrice;
+  }
   const available = (key, packageId = state.packageId) => config.sectors[key].left > 0 && (!isYas || !config.packages.find(p => p.id === packageId).unavailable.includes(key));
   function matchesFilter(sector) {
     return state.filter === 'all' || (state.filter === 'premium' ? ['vip', 'business', 'premium'].includes(sector.category) : sector.category === state.filter);
