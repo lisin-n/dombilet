@@ -39,6 +39,22 @@ dialog{max-width:calc(100vw - 20px);max-height:calc(100dvh - 24px);border-radius
   stroke-width: 2.5px;
   stroke-linejoin: round;
 }
+.yas-map-zone .zone-shape {
+  fill: var(--zone-color, #7954b4);
+  stroke: #fff;
+  stroke-width: 1px;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+.yas-zone-hit { fill: transparent; }
+.map-svg .yas-map-zone.is-hovered .zone-shape,
+.map-svg .yas-map-zone:focus-visible .zone-shape {
+  stroke-width: 1.5px !important;
+}
+.yas-straight-label {
+  fill: #fff;
+  font: 800 4.5px Manrope, Arial, sans-serif;
+}
 @media (max-width: 760px) {
   .yas-reference-map .surrounding-labels { font-size: 36px; }
 }

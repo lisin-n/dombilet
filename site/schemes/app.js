@@ -11,7 +11,8 @@
   const defaults = { packageId: 'four', current: null, selection: null, seats: {}, filter: 'all', view: 'map' };
   let saved = {};
   try { saved = JSON.parse(sessionStorage.getItem(storageKey) || '{}'); } catch {}
-  const state = { ...defaults, ...saved, qty: 0, filter: 'all', priceFilter: null, view: 'map' };
+  const state = { ...defaults, ...saved, qty: 0, filter: 'all', view: 'map' };
+  const selectedPrices = new Set();
   if (!config.sectors[state.current]) state.current = null;
   if (state.selection && !config.sectors[state.selection.key]) state.selection = null;
   if (!state.seats || typeof state.seats !== 'object') state.seats = {};
@@ -54,8 +55,8 @@
     return sector.category === 'premium' ? 'premium' : sector.id;
   }
   function matchesFilter(sector) {
-    return matchesCategory(sector) && (!state.priceFilter ||
-      (available(sector.id) && priceFilterKey(sector) === state.priceFilter));
+    return matchesCategory(sector) && (!selectedPrices.size ||
+      (available(sector.id) && selectedPrices.has(priceFilterKey(sector))));
   }
   function notify(message) {
     $('toast').textContent = message;
@@ -88,8 +89,11 @@
       matching.forEach(s => bands.set(s.price,{key:priceFilterKey(s),color:s.color,price:s.price}));
       chips = [...bands.values()].sort((a,b) => a.price-b.price);
     }
-    if (!chips.some(chip => chip.key === state.priceFilter)) state.priceFilter = null;
-    $('price-legend').innerHTML = chips.map(c => `<button type="button" class="price-chip" data-price-filter="${html(c.key)}" aria-pressed="${c.key === state.priceFilter}" style="--chip:${c.color}"><i aria-hidden="true"></i>${c.name ? `<small>${html(c.name)}</small>` : ''}${money(c.price)}</button>`).join('');
+    const visiblePrices = new Set(chips.map(chip => chip.key));
+    for (const key of selectedPrices) {
+      if (!visiblePrices.has(key)) selectedPrices.delete(key);
+    }
+    $('price-legend').innerHTML = chips.map(c => `<button type="button" class="price-chip" data-price-filter="${html(c.key)}" aria-pressed="${selectedPrices.has(c.key)}" style="--chip:${c.color}"><i aria-hidden="true"></i>${c.name ? `<small>${html(c.name)}</small>` : ''}${money(c.price)}</button>`).join('');
   }
   function textColor(color) {
     const hex = color.replace('#','');
@@ -116,8 +120,10 @@
       group.setAttribute('tabindex', filtered ? '-1' : '0');
       group.setAttribute('aria-pressed', String(key === state.current));
       const color = canBuy ? sector.color : '#c8cec9';
-      if (isYas && !stage.querySelector('.yas-reference-map')) {
+      if (isYas && !group.closest('.yas-reference-map')) {
         group.querySelectorAll('.sec-shape,.zone-shape').forEach(shape => { shape.style.setProperty('fill', color, 'important'); });
+      } else if (group.classList.contains('yas-map-zone')) {
+        group.style.setProperty('--zone-color', color);
       } else if(!isYas) {
         [...group.children].filter(node => ['path','rect','polygon'].includes(node.tagName.toLowerCase())).forEach(shape => {
           shape.style.setProperty('fill', color, 'important');
@@ -146,14 +152,14 @@
     hideTooltip();
   }
   function togglePriceFilter(key) {
-    state.priceFilter = state.priceFilter === key ? null : key;
+    if (selectedPrices.has(key)) selectedPrices.delete(key);
+    else selectedPrices.add(key);
     $('price-legend').querySelectorAll('[data-price-filter]').forEach(button => {
-      button.setAttribute('aria-pressed', String(button.dataset.priceFilter === state.priceFilter));
+      button.setAttribute('aria-pressed', String(selectedPrices.has(button.dataset.priceFilter)));
     });
     renderMap();
     renderList();
     hideTooltip();
-    if (state.priceFilter && !stage.querySelector('.sector[data-sector]:not(.is-filtered)')) setView('list');
   }
   function requestPackage(id) {
     if (id === state.packageId) { packageExpanded = false; if (sectorDialog.open) renderModal(); return; }
@@ -411,20 +417,12 @@
     $('nearby-options').innerHTML=candidates.map(({key})=>`<button type="button" data-open-sector="${key}"><span>${html(config.sectors[key].name)}</span><b>${available(key)?money(priceFor(key)):'Нет билетов'}</b></button>`).join('');
     $('nearby-dialog').showModal();
   }
-  function openOfferGroup(key) {
-    const group=config.catalogGroups?.[key];
-    if(!group)return;
-    $('nearby-title').textContent=group.name;
-    $('nearby-dialog').querySelector('.eyebrow').textContent='Зоны из последней схемы';
-    $('nearby-options').innerHTML=group.keys.map(id=>`<button type="button" data-open-sector="${id}"><span>${html(config.sectors[id].name)}</span><b>${available(id)?money(priceFor(id)):'Нет билетов'}</b></button>`).join('');
-    $('nearby-dialog').showModal();
-  }
   stage.addEventListener('pointerdown',event=>{
     if(event.target.closest('button, a')||event.button>0)return;
     cancelAnimationFrame(animation);hideTooltip();
     const view=currentView();
     pointers.set(event.pointerId,{x:event.clientX,y:event.clientY});
-    if(pointers.size===1)gesture={view,startX:event.clientX,startY:event.clientY,start:[...view.current],target:event.target.closest('[data-sector]'),offer:event.target.closest('[data-offer-group]')?.dataset.offerGroup,moved:false,pinched:false};
+    if(pointers.size===1)gesture={view,startX:event.clientX,startY:event.clientY,start:[...view.current],target:event.target.closest('[data-sector]'),moved:false,pinched:false};
     if(pointers.size===2){const [a,b]=[...pointers.values()];pinch={distance:Math.hypot(a.x-b.x,a.y-b.y),width:view.current[2]};gesture.pinched=true;}
     stage.setPointerCapture(event.pointerId);
   });
@@ -455,8 +453,7 @@
     if(!pointers.size){
       if(gesture&&!gesture.moved&&!gesture.pinched&&!cancelled){
         const key=gesture.target?.dataset.sector;
-        if(gesture.offer)openOfferGroup(gesture.offer);
-        else if(key && matchesFilter(config.sectors[key]))openSector(key);
+        if(key && matchesFilter(config.sectors[key]))openSector(key);
         else if(event.pointerType==='touch')nearby(event.clientX,event.clientY);
       }
       gesture=null;pinch=null;
@@ -470,8 +467,6 @@
     event.preventDefault();zoom(event.deltaY>0?1.12:.89,event.clientX,event.clientY,false);
   },{passive:false});
   stage.addEventListener('keydown',event=>{
-    const offer=event.target.closest('[data-offer-group]');
-    if(offer&&['Enter',' '].includes(event.key)){event.preventDefault();openOfferGroup(offer.dataset.offerGroup);return;}
     const group=event.target.closest('[data-sector]');
     if(group&&['Enter',' '].includes(event.key)){
       event.preventDefault();
@@ -489,7 +484,7 @@
     if(!target)return;
     if(target.dataset.package){requestPackage(target.dataset.package);return;}
     if(target.dataset.priceFilter){togglePriceFilter(target.dataset.priceFilter);return;}
-    if(target.dataset.filter){state.filter=target.dataset.filter;state.priceFilter=null;renderFilters();renderLegend();renderMap();renderList();hideTooltip();return;}
+    if(target.dataset.filter){state.filter=target.dataset.filter;selectedPrices.clear();renderFilters();renderLegend();renderMap();renderList();hideTooltip();return;}
     if(target.dataset.openSector){if($('nearby-dialog').open)$('nearby-dialog').close();openSector(target.dataset.openSector);return;}
     if(target.dataset.close){$(target.dataset.close).close();return;}
     if(target.hasAttribute('data-qty')){setQuantity(Number(target.dataset.qty));return;}

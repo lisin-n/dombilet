@@ -1,0 +1,103 @@
+"""Place the extra zones from the latest SVG on the illustrated Yas Marina map."""
+import html
+import json
+from pathlib import Path
+import re
+from xml.etree import ElementTree as ET
+
+SCHEMES = Path(__file__).resolve().parents[1] / 'site/schemes'
+MAPS = SCHEMES / 'assets/maps'
+ZONES = json.loads((MAPS / 'latest-zones.json').read_text())
+CATALOG = json.loads((SCHEMES / 'data.js').read_text().split('=', 1)[1].strip().rstrip(';'))['yas']['sectors']
+SVG_PATTERN = r'<svg\b(?=[^>]*data-orient="[lp]")[\s\S]*?</svg>'
+LATEST = ET.fromstring(re.search(SVG_PATTERN, (MAPS / 'yas-marina-latest.html').read_text())[0])
+REFERENCE = ET.fromstring(re.search(SVG_PATTERN, (SCHEMES / 'widget-yas.html').read_text())[0])
+
+
+def sectors(svg):
+    return {group.get('data-sector'): group for group in svg.iter()
+            if 'sector' in group.get('class', '').split()}
+
+
+def shapes(group):
+    return [shape for shape in group.iter() if 'sec-shape' in shape.get('class', '').split()]
+
+
+def source_center(key):
+    x1, y1, x2, y2 = ZONES[key]['bbox']
+    return complex((x1 + x2) / 2, (y1 + y2) / 2)
+
+
+def reference_center(group):
+    shape = shapes(group)[0]
+    points = shape.get('points') or shape.get('d')
+    xy = [(float(x), float(y)) for x, y in re.findall(r'([\d.]+)[ ,]([\d.]+)', points)]
+    x, y = zip(*xy)
+    return complex((min(x) + max(x)) / 2, (min(y) + max(y)) / 2)
+
+
+def render_geometry(group):
+    for shape in shapes(group):
+        tag = shape.tag.rsplit('}', 1)[-1]
+        assert tag in {'path', 'circle'}, tag
+        attrs = ' '.join(f'{name}="{shape.get(name)}"' for name in ('d', 'cx', 'cy', 'r')
+                         if name in shape.attrib)
+        yield f'<{tag} class="sec-shape zone-shape" {attrs}/>'
+
+
+# Reuse the six shared sectors to match scale and bearing. Anchor each cluster
+# to its illustrated grandstand to keep local positions together on the two drawings.
+original = {key: group for key, group in sectors(REFERENCE).items()
+            if 'yas-map-zone' not in group.get('class', '').split()}
+anchors = {key: reference_center(group) for key, group in original.items() if key in ZONES}
+source_mean = sum(map(source_center, anchors)) / len(anchors)
+reference_mean = sum(anchors.values()) / len(anchors)
+rotation = sum((point - reference_mean) * (source_center(key) - source_mean).conjugate()
+               for key, point in anchors.items()) / sum(abs(source_center(key) - source_mean) ** 2 for key in anchors)
+
+
+def draw_zone(key, group, orientation):
+    source = source_center(key)
+    anchor = ZONES[key]['parent'] or min(anchors, key=lambda item: abs(source - source_center(item)))
+    if anchor == 'north-straight':
+        anchor = 'north'
+    origin = anchors[anchor] - rotation * source_center(anchor)
+    transform = f'matrix({rotation.real:.5f} {rotation.imag:.5f} {-rotation.imag:.5f} {rotation.real:.5f} {origin.real:.2f} {origin.imag:.2f})'
+    name = html.escape(CATALOG[key]['name'], quote=True)
+    geometry = ''.join(render_geometry(group))
+    if key in {'yas-suite-main-premium', 'trackside-at-sunset-lounge'}:
+        # The original star is cut out of the dot. Its centre should still respond to taps.
+        geometry = (f'<circle class="yas-zone-hit" cx="{source.real:.2f}" cy="{source.imag:.2f}" r="4.41"/>'
+                    + geometry)
+    if key == '16-360-the-terrace-collection':
+        # The narrow outline encloses three separately selectable terraces. Use the source label anchor as a tap point.
+        geometry += '<circle class="sec-shape zone-shape yas-collection-pin" cx="238" cy="117" r="4.41"/>'
+    if key in {'west-straight', 'north-straight'}:
+        angle = 180 if orientation == 'l' else 90
+        label = name.upper()
+        geometry += (f'<text class="yas-straight-label" x="{source.real:.2f}" y="{source.imag:.2f}"'
+                     f' transform="rotate({angle} {source.real:.2f} {source.imag:.2f})"'
+                     f' text-anchor="middle" dominant-baseline="central" pointer-events="none" aria-hidden="true">{label}</text>')
+    return (f'<g class="sector yas-map-zone" data-sector="{key}" transform="{transform}"'
+            f' role="button" tabindex="0" aria-label="{name}">{geometry}</g>')
+
+
+extra = {key: group for key, group in sectors(LATEST).items() if key not in original}
+assert set(original) | extra.keys() == CATALOG.keys()
+
+
+def update_svg(match):
+    svg = match[0]
+    orientation = 'l' if 'data-orient="l"' in svg else 'p'
+    transform = ' transform="rotate(-90 1250 990)"' if orientation == 'l' else ''
+    zones = '\n'.join(draw_zone(key, group, orientation) for key, group in extra.items())
+    layer = f'<g class="yas-zone-layer"{transform}>\n{zones}\n</g>'
+    svg, updated = re.subn(r'<g class="(?:catalog-marker|yas-zone)-layer"[^>]*>[\s\S]*</g>(?=</svg>)',
+                           lambda _: layer, svg)
+    assert updated == 1
+    assert sectors(ET.fromstring(svg)).keys() == CATALOG.keys()
+    return svg
+
+
+for asset in [SCHEMES / 'widget-yas.html', MAPS / 'yas-marina-reference.html']:
+    asset.write_text(re.sub(SVG_PATTERN, update_svg, asset.read_text()))
