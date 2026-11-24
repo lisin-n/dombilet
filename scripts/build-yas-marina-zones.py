@@ -40,21 +40,11 @@ TRACKSIDE_POSITIONS = {
     'lounge-north': (349, 1060),
     'shams-suite': (565, 1101),
     'north-straight-premium': (702, 1131),
-    '16-360-the-terrace-collection': (1368, 1190),
 }
 
-# Keep visible gaps in the narrow roadside strips, bays and terrace cluster.
-ZONE_SCALE = {
-    'club58': .44,
-    'yas-suite-west': .44,
-    'wow-suite': .60,
-    'yas-suite-main': .80,
-    'sunset-lounge': .63,
-    'trackside-at-sunset-lounge': .63,
-    'terrace-right': .85,
-    'courtyard': .85,
-    'terrace-left': .85,
-}
+# Move the original four-piece cluster together to clear the main straight.
+TERRACE_GROUP = {'terrace-right', 'terrace-left', 'courtyard', '16-360-the-terrace-collection'}
+TERRACE_GROUP_OFFSET = complex(-18, 11)
 
 # The House and The House Premium share a bend. The outlines follow the
 # illustrated track at a constant offset, with a gap between the end caps.
@@ -134,18 +124,15 @@ def draw_zone(key, group, orientation):
     else:
         anchor = ZONES[key]['parent'] or min(anchors, key=lambda item: abs(source - source_center(item)))
         centre = anchors[anchor] + rotation * (source - source_center(anchor))
-    placement = rotation * ZONE_SCALE.get(key, 1)
-    origin = centre - placement * source
-    transform = f'matrix({placement.real:.5f} {placement.imag:.5f} {-placement.imag:.5f} {placement.real:.5f} {origin.real:.2f} {origin.imag:.2f})'
+    if key in TERRACE_GROUP:
+        centre += 1j * TERRACE_GROUP_OFFSET
+    origin = centre - rotation * source
+    transform = f'matrix({rotation.real:.5f} {rotation.imag:.5f} {-rotation.imag:.5f} {rotation.real:.5f} {origin.real:.2f} {origin.imag:.2f})'
     geometry = ''.join(render_geometry(group))
     if key in {'yas-suite-main-premium', 'trackside-at-sunset-lounge'}:
         # The original star is cut out of the dot. Its centre should still respond to taps.
         geometry = (f'<circle class="yas-zone-hit" cx="{source.real:.2f}" cy="{source.imag:.2f}" r="4.41"/>'
                     + geometry)
-    if key == '16-360-the-terrace-collection':
-        # One marker leaves room for the three separately bookable terraces.
-        geometry = (f'<circle class="sec-shape zone-shape yas-collection-pin"'
-                    f' cx="{source.real:.2f}" cy="{source.imag:.2f}" r="4.41"/>')
     if key in {'west-straight', 'north-straight'}:
         angle = 180 if orientation == 'l' else 90
         label = name.upper()
@@ -158,7 +145,7 @@ def draw_zone(key, group, orientation):
 extra = {key: group for key, group in sectors(LATEST).items() if key not in original}
 assert set(original) | extra.keys() == CATALOG.keys()
 assert TRACKSIDE_POSITIONS.keys() <= extra.keys()
-assert ZONE_SCALE.keys() <= extra.keys()
+assert TERRACE_GROUP <= extra.keys()
 assert CURVED_TRACKSIDE_OUTLINES.keys() <= extra.keys()
 
 
