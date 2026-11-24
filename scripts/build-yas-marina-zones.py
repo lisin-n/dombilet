@@ -18,39 +18,62 @@ ILLUSTRATION_PIVOT = complex(1250, 990)
 # local curves, which differ from the source SVG around the straights and hairpins.
 TRACKSIDE_POSITIONS = {
     'west-straight': (1208, 1263),
-    'club58': (1253, 1375),
-    'yas-suite-west': (1444, 1433),
-    'west-club': (1540, 1361),
-    'turn-at-west': (1622, 1308),
-    'marsa-suite': (1807, 1213),
-    'deck-at-9': (1918, 586),
-    'south-club': (2131, 686),
+    'club58': (1270, 1316),
+    'yas-suite-west': (1458, 1374),
+    'lounge-west': (1480, 1442),
+    'west-club': (1540, 1367),
+    'turn-at-west': (1636, 1312),
+    'marsa-suite': (1810, 1216),
+    'deck-at-9': (1906, 613),
+    'south-club': (2134, 688),
+    'marina-views-suite': (1899, 1142),
     'north-straight': (718, 1100),
-    'sunset-lounge': (693, 861),
-    'trackside-at-sunset-lounge': (664, 867),
-    'lounge-north': (361, 982),
+    'wow-suite': (1620, 796),
+    'yacht-hospitality': (1752, 958),
+    'terrace': (1294, 777),
+    'yas-suite-main': (1322, 1009),
+    'yas-suite-main-premium': (1326, 1086),
+    'deck-at-2': (1030, 828),
+    'sunset-lounge': (696, 862),
+    'trackside-at-sunset-lounge': (658, 864),
+    'yas-suite-north': (405, 883),
+    'lounge-north': (349, 1060),
     'shams-suite': (565, 1101),
-    'north-straight-premium': (704, 1130),
+    'north-straight-premium': (702, 1131),
+    '16-360-the-terrace-collection': (1368, 1190),
+}
+
+# Keep visible gaps in the narrow roadside strips, bays and terrace cluster.
+ZONE_SCALE = {
+    'club58': .44,
+    'yas-suite-west': .44,
+    'wow-suite': .60,
+    'yas-suite-main': .80,
+    'sunset-lounge': .63,
+    'trackside-at-sunset-lounge': .63,
+    'terrace-right': .85,
+    'courtyard': .85,
+    'terrace-left': .85,
 }
 
 # The House and The House Premium share a bend. The outlines follow the
 # illustrated track at a constant offset, with a gap between the end caps.
 CURVED_TRACKSIDE_OUTLINES = {
     'the-house': (
-        'M1316.59 1717.58 C1330.90 1724.73 1343.22 1729.66 1358.28 1735.05 '
-        'Q1363.84 1737.04 1365.84 1731.38 L1370.50 1718.18 '
-        'Q1372.50 1712.52 1367.04 1710.57 '
-        'C1351.98 1705.18 1342.52 1701.48 1328.21 1694.32 '
-        'Q1323.40 1691.92 1320.65 1697.26 L1314.23 1709.70 '
-        'Q1311.48 1715.03 1316.59 1717.58 Z'
+        'M1318.37 1714.00 C1332.69 1721.16 1344.57 1725.89 1359.63 1731.28 '
+        'Q1365.18 1733.26 1367.17 1727.61 L1371.83 1714.40 '
+        'Q1373.83 1708.75 1368.39 1706.80 '
+        'C1353.32 1701.41 1344.31 1697.90 1330.00 1690.75 '
+        'Q1325.24 1688.37 1322.49 1693.70 L1316.07 1706.14 '
+        'Q1313.32 1711.47 1318.37 1714.00 Z'
     ),
     'the-house-premium': (
-        'M1378.42 1741.95 C1386.35 1744.51 1393.64 1746.75 1401.65 1749.06 '
-        'Q1407.27 1750.65 1408.90 1744.88 L1412.71 1731.40 '
-        'Q1414.34 1725.63 1408.88 1724.09 '
-        'C1400.87 1721.77 1394.35 1719.77 1386.42 1717.21 '
-        'Q1381.26 1715.49 1379.35 1721.18 L1374.89 1734.45 '
-        'Q1372.98 1740.14 1378.42 1741.95 Z'
+        'M1379.66 1738.14 C1387.58 1740.71 1394.75 1742.90 1402.76 1745.22 '
+        'Q1408.36 1746.80 1409.99 1741.03 L1413.79 1727.56 '
+        'Q1415.42 1721.78 1409.99 1720.25 '
+        'C1401.98 1717.93 1395.58 1715.97 1387.65 1713.40 '
+        'Q1382.54 1711.70 1380.63 1717.39 L1376.17 1730.66 '
+        'Q1374.26 1736.35 1379.66 1738.14 Z'
     ),
 }
 
@@ -111,16 +134,18 @@ def draw_zone(key, group, orientation):
     else:
         anchor = ZONES[key]['parent'] or min(anchors, key=lambda item: abs(source - source_center(item)))
         centre = anchors[anchor] + rotation * (source - source_center(anchor))
-    origin = centre - rotation * source
-    transform = f'matrix({rotation.real:.5f} {rotation.imag:.5f} {-rotation.imag:.5f} {rotation.real:.5f} {origin.real:.2f} {origin.imag:.2f})'
+    placement = rotation * ZONE_SCALE.get(key, 1)
+    origin = centre - placement * source
+    transform = f'matrix({placement.real:.5f} {placement.imag:.5f} {-placement.imag:.5f} {placement.real:.5f} {origin.real:.2f} {origin.imag:.2f})'
     geometry = ''.join(render_geometry(group))
     if key in {'yas-suite-main-premium', 'trackside-at-sunset-lounge'}:
         # The original star is cut out of the dot. Its centre should still respond to taps.
         geometry = (f'<circle class="yas-zone-hit" cx="{source.real:.2f}" cy="{source.imag:.2f}" r="4.41"/>'
                     + geometry)
     if key == '16-360-the-terrace-collection':
-        # The narrow outline encloses three separately selectable terraces. Use the source label anchor as a tap point.
-        geometry += '<circle class="sec-shape zone-shape yas-collection-pin" cx="238" cy="117" r="4.41"/>'
+        # One marker leaves room for the three separately bookable terraces.
+        geometry = (f'<circle class="sec-shape zone-shape yas-collection-pin"'
+                    f' cx="{source.real:.2f}" cy="{source.imag:.2f}" r="4.41"/>')
     if key in {'west-straight', 'north-straight'}:
         angle = 180 if orientation == 'l' else 90
         label = name.upper()
@@ -133,6 +158,7 @@ def draw_zone(key, group, orientation):
 extra = {key: group for key, group in sectors(LATEST).items() if key not in original}
 assert set(original) | extra.keys() == CATALOG.keys()
 assert TRACKSIDE_POSITIONS.keys() <= extra.keys()
+assert ZONE_SCALE.keys() <= extra.keys()
 assert CURVED_TRACKSIDE_OUTLINES.keys() <= extra.keys()
 
 
