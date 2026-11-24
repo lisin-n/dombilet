@@ -20,7 +20,7 @@ TRACKSIDE_POSITIONS = {
     'west-straight': (1208, 1263),
     'club58': (1270, 1316),
     'yas-suite-west': (1458, 1374),
-    'lounge-west': (1480, 1442),
+    'lounge-west': (1517, 1387),
     'west-club': (1540, 1367),
     'turn-at-west': (1636, 1312),
     'marsa-suite': (1810, 1216),
@@ -37,7 +37,7 @@ TRACKSIDE_POSITIONS = {
     'sunset-lounge': (696, 862),
     'trackside-at-sunset-lounge': (658, 864),
     'yas-suite-north': (405, 883),
-    'lounge-north': (349, 1060),
+    'lounge-north': (400, 1060),
     'shams-suite': (565, 1101),
     'north-straight-premium': (702, 1131),
 }
