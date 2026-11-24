@@ -93,7 +93,21 @@ dialog{max-width:calc(100vw - 20px);max-height:calc(100dvh - 24px);border-radius
 }
 
 @media (max-width: 760px) {
+  .price-legend {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scrollbar-width: none;
+    --edge-mask: linear-gradient(to right, var(--left-edge, black), black 24px, black calc(100% - 24px), var(--right-edge, black));
+    -webkit-mask-image: var(--edge-mask);
+    mask-image: var(--edge-mask);
+  }
+  .price-legend::-webkit-scrollbar { display: none; }
+  .price-legend.can-scroll-left { --left-edge: transparent; }
+  .price-legend.can-scroll-right { --right-edge: transparent; }
   .price-chip {
+    flex: 0 0 auto;
+    white-space: nowrap;
     min-height: 34px;
     padding-inline: 8px;
   }

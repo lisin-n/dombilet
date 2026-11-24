@@ -77,6 +77,16 @@
   function renderFilters() {
     $('filter-tabs').innerHTML = config.filters.map(f => `<button type="button" data-filter="${f.id}" class="${state.filter === f.id ? 'active' : ''}" aria-pressed="${state.filter === f.id}">${html(f.name)}</button>`).join('');
   }
+  const legend = $('price-legend');
+  function updateLegendEdges() {
+    const remaining = legend.scrollWidth - legend.clientWidth - legend.scrollLeft;
+    legend.classList.toggle('can-scroll-left', legend.scrollLeft > 1);
+    legend.classList.toggle('can-scroll-right', remaining > 1);
+  }
+  legend.addEventListener('scroll', updateLegendEdges, {passive: true});
+  new ResizeObserver(updateLegendEdges).observe(legend);
+  document.fonts.ready.then(updateLegendEdges);
+
   function renderLegend() {
     const matching = Object.values(config.sectors).filter(s => available(s.id) && matchesCategory(s));
     let chips;
@@ -93,7 +103,8 @@
     for (const key of selectedPrices) {
       if (!visiblePrices.has(key)) selectedPrices.delete(key);
     }
-    $('price-legend').innerHTML = chips.map(c => `<button type="button" class="price-chip" data-price-filter="${html(c.key)}" aria-pressed="${selectedPrices.has(c.key)}" style="--chip:${c.color}"><i aria-hidden="true"></i>${c.name ? `<small>${html(c.name)}</small>` : ''}${money(c.price)}</button>`).join('');
+    legend.innerHTML = chips.map(c => `<button type="button" class="price-chip" data-price-filter="${html(c.key)}" aria-pressed="${selectedPrices.has(c.key)}" style="--chip:${c.color}"><i aria-hidden="true"></i>${c.name ? `<small>${html(c.name)}</small>` : ''}${money(c.price)}</button>`).join('');
+    updateLegendEdges();
   }
   function textColor(color) {
     const hex = color.replace('#','');
