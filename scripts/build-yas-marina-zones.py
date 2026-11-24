@@ -30,7 +30,7 @@ TRACKSIDE_POSITIONS = {
     'trackside-at-sunset-lounge': (664, 867),
     'lounge-north': (361, 982),
     'shams-suite': (565, 1101),
-    'north-straight-premium': (709, 1124),
+    'north-straight-premium': (704, 1130),
 }
 
 
