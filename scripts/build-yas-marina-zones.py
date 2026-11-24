@@ -18,8 +18,8 @@ ILLUSTRATION_PIVOT = complex(1250, 990)
 # local curves, which differ from the source SVG around the straights and hairpins.
 TRACKSIDE_POSITIONS = {
     'west-straight': (1208, 1263),
-    'club58': (1270, 1327),
-    'yas-suite-west': (1458, 1385),
+    'club58': (1253, 1375),
+    'yas-suite-west': (1444, 1433),
     'west-club': (1540, 1361),
     'turn-at-west': (1622, 1308),
     'marsa-suite': (1807, 1213),
@@ -31,6 +31,27 @@ TRACKSIDE_POSITIONS = {
     'lounge-north': (361, 982),
     'shams-suite': (565, 1101),
     'north-straight-premium': (704, 1130),
+}
+
+# The House and The House Premium share a bend. The outlines follow the
+# illustrated track at a constant offset, with a gap between the end caps.
+CURVED_TRACKSIDE_OUTLINES = {
+    'the-house': (
+        'M1316.59 1717.58 C1330.90 1724.73 1343.22 1729.66 1358.28 1735.05 '
+        'Q1363.84 1737.04 1365.84 1731.38 L1370.50 1718.18 '
+        'Q1372.50 1712.52 1367.04 1710.57 '
+        'C1351.98 1705.18 1342.52 1701.48 1328.21 1694.32 '
+        'Q1323.40 1691.92 1320.65 1697.26 L1314.23 1709.70 '
+        'Q1311.48 1715.03 1316.59 1717.58 Z'
+    ),
+    'the-house-premium': (
+        'M1378.42 1741.95 C1386.35 1744.51 1393.64 1746.75 1401.65 1749.06 '
+        'Q1407.27 1750.65 1408.90 1744.88 L1412.71 1731.40 '
+        'Q1414.34 1725.63 1408.88 1724.09 '
+        'C1400.87 1721.77 1394.35 1719.77 1386.42 1717.21 '
+        'Q1381.26 1715.49 1379.35 1721.18 L1374.89 1734.45 '
+        'Q1372.98 1740.14 1378.42 1741.95 Z'
+    ),
 }
 
 
@@ -77,6 +98,12 @@ rotation = sum((point - reference_mean) * (source_center(key) - source_mean).con
 
 
 def draw_zone(key, group, orientation):
+    name = html.escape(CATALOG[key]['name'], quote=True)
+    markup = f'<g class="sector yas-map-zone" data-sector="{key}"'
+    accessible = f' role="button" tabindex="0" aria-label="{name}"'
+    if key in CURVED_TRACKSIDE_OUTLINES:
+        return f'{markup}{accessible}><path class="sec-shape zone-shape" d="{CURVED_TRACKSIDE_OUTLINES[key]}"/></g>'
+
     source = source_center(key)
     if key in TRACKSIDE_POSITIONS:
         landscape = complex(*TRACKSIDE_POSITIONS[key])
@@ -86,7 +113,6 @@ def draw_zone(key, group, orientation):
         centre = anchors[anchor] + rotation * (source - source_center(anchor))
     origin = centre - rotation * source
     transform = f'matrix({rotation.real:.5f} {rotation.imag:.5f} {-rotation.imag:.5f} {rotation.real:.5f} {origin.real:.2f} {origin.imag:.2f})'
-    name = html.escape(CATALOG[key]['name'], quote=True)
     geometry = ''.join(render_geometry(group))
     if key in {'yas-suite-main-premium', 'trackside-at-sunset-lounge'}:
         # The original star is cut out of the dot. Its centre should still respond to taps.
@@ -101,13 +127,13 @@ def draw_zone(key, group, orientation):
         geometry += (f'<text class="yas-straight-label" x="{source.real:.2f}" y="{source.imag:.2f}"'
                      f' transform="rotate({angle} {source.real:.2f} {source.imag:.2f})"'
                      f' text-anchor="middle" dominant-baseline="central" pointer-events="none" aria-hidden="true">{label}</text>')
-    return (f'<g class="sector yas-map-zone" data-sector="{key}" transform="{transform}"'
-            f' role="button" tabindex="0" aria-label="{name}">{geometry}</g>')
+    return f'{markup} transform="{transform}"{accessible}>{geometry}</g>'
 
 
 extra = {key: group for key, group in sectors(LATEST).items() if key not in original}
 assert set(original) | extra.keys() == CATALOG.keys()
 assert TRACKSIDE_POSITIONS.keys() <= extra.keys()
+assert CURVED_TRACKSIDE_OUTLINES.keys() <= extra.keys()
 
 
 def update_svg(match):
